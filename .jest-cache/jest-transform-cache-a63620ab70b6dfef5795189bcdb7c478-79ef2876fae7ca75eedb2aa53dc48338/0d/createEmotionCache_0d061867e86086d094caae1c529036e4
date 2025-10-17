@@ -1,0 +1,438 @@
+d8c994f45e298ced55e9a10d51ced959
+"use strict";
+
+/* istanbul ignore next */
+function cov_28dkv5z6ih() {
+  var path = "/Users/seaofchaos/Projects/next-map/src/lib/createEmotionCache.ts";
+  var hash = "cc66ab86d505cbc63c5139e82432ec6e4fe7ef23";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "/Users/seaofchaos/Projects/next-map/src/lib/createEmotionCache.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 0
+        },
+        end: {
+          line: 4,
+          column: 3
+        }
+      },
+      "1": {
+        start: {
+          line: 5,
+          column: 0
+        },
+        end: {
+          line: 13,
+          column: 3
+        }
+      },
+      "2": {
+        start: {
+          line: 11,
+          column: 8
+        },
+        end: {
+          line: 11,
+          column: 34
+        }
+      },
+      "3": {
+        start: {
+          line: 14,
+          column: 29
+        },
+        end: {
+          line: 14,
+          column: 80
+        }
+      },
+      "4": {
+        start: {
+          line: 16,
+          column: 4
+        },
+        end: {
+          line: 18,
+          column: 6
+        }
+      },
+      "5": {
+        start: {
+          line: 20,
+          column: 18
+        },
+        end: {
+          line: 20,
+          column: 49
+        }
+      },
+      "6": {
+        start: {
+          line: 23,
+          column: 4
+        },
+        end: {
+          line: 26,
+          column: 5
+        }
+      },
+      "7": {
+        start: {
+          line: 24,
+          column: 38
+        },
+        end: {
+          line: 24,
+          column: 100
+        }
+      },
+      "8": {
+        start: {
+          line: 25,
+          column: 8
+        },
+        end: {
+          line: 25,
+          column: 60
+        }
+      },
+      "9": {
+        start: {
+          line: 27,
+          column: 4
+        },
+        end: {
+          line: 30,
+          column: 7
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 10,
+            column: 9
+          },
+          end: {
+            line: 10,
+            column: 10
+          }
+        },
+        loc: {
+          start: {
+            line: 10,
+            column: 20
+          },
+          end: {
+            line: 12,
+            column: 5
+          }
+        },
+        line: 10
+      },
+      "1": {
+        name: "_interop_require_default",
+        decl: {
+          start: {
+            line: 15,
+            column: 9
+          },
+          end: {
+            line: 15,
+            column: 33
+          }
+        },
+        loc: {
+          start: {
+            line: 15,
+            column: 39
+          },
+          end: {
+            line: 19,
+            column: 1
+          }
+        },
+        line: 15
+      },
+      "2": {
+        name: "createEmotionCache",
+        decl: {
+          start: {
+            line: 21,
+            column: 9
+          },
+          end: {
+            line: 21,
+            column: 27
+          }
+        },
+        loc: {
+          start: {
+            line: 21,
+            column: 30
+          },
+          end: {
+            line: 31,
+            column: 1
+          }
+        },
+        line: 21
+      }
+    },
+    branchMap: {
+      "0": {
+        loc: {
+          start: {
+            line: 16,
+            column: 11
+          },
+          end: {
+            line: 18,
+            column: 5
+          }
+        },
+        type: "cond-expr",
+        locations: [{
+          start: {
+            line: 16,
+            column: 35
+          },
+          end: {
+            line: 16,
+            column: 38
+          }
+        }, {
+          start: {
+            line: 16,
+            column: 41
+          },
+          end: {
+            line: 18,
+            column: 5
+          }
+        }],
+        line: 16
+      },
+      "1": {
+        loc: {
+          start: {
+            line: 16,
+            column: 11
+          },
+          end: {
+            line: 16,
+            column: 32
+          }
+        },
+        type: "binary-expr",
+        locations: [{
+          start: {
+            line: 16,
+            column: 11
+          },
+          end: {
+            line: 16,
+            column: 14
+          }
+        }, {
+          start: {
+            line: 16,
+            column: 18
+          },
+          end: {
+            line: 16,
+            column: 32
+          }
+        }],
+        line: 16
+      },
+      "2": {
+        loc: {
+          start: {
+            line: 23,
+            column: 4
+          },
+          end: {
+            line: 26,
+            column: 5
+          }
+        },
+        type: "if",
+        locations: [{
+          start: {
+            line: 23,
+            column: 4
+          },
+          end: {
+            line: 26,
+            column: 5
+          }
+        }, {
+          start: {
+            line: undefined,
+            column: undefined
+          },
+          end: {
+            line: undefined,
+            column: undefined
+          }
+        }],
+        line: 23
+      },
+      "3": {
+        loc: {
+          start: {
+            line: 25,
+            column: 25
+          },
+          end: {
+            line: 25,
+            column: 59
+          }
+        },
+        type: "binary-expr",
+        locations: [{
+          start: {
+            line: 25,
+            column: 25
+          },
+          end: {
+            line: 25,
+            column: 46
+          }
+        }, {
+          start: {
+            line: 25,
+            column: 50
+          },
+          end: {
+            line: 25,
+            column: 59
+          }
+        }],
+        line: 25
+      }
+    },
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0
+    },
+    f: {
+      "0": 0,
+      "1": 0,
+      "2": 0
+    },
+    b: {
+      "0": [0, 0],
+      "1": [0, 0],
+      "2": [0, 0],
+      "3": [0, 0]
+    },
+    inputSourceMap: {
+      version: 3,
+      sources: ["/Users/seaofchaos/Projects/next-map/src/lib/createEmotionCache.ts"],
+      sourcesContent: ["import createCache from '@emotion/cache';\n\nconst isBrowser = typeof document !== 'undefined';\n\n// On the client side, Create a meta tag at the top of the <head> and set it as insertionPoint.\n// This assures that MUI styles are loaded first.\n// It allows developers to easily override MUI styles with other styling solutions, like CSS modules.\nexport default function createEmotionCache() {\n  let insertionPoint;\n\n  if (isBrowser) {\n    const emotionInsertionPoint = document.querySelector<HTMLMetaElement>(\n      'meta[name=\"emotion-insertion-point\"]'\n    );\n    insertionPoint = emotionInsertionPoint ?? undefined;\n  }\n\n  return createCache({ key: 'mui-style', insertionPoint });\n}\n"],
+      names: ["createEmotionCache", "isBrowser", "document", "insertionPoint", "emotionInsertionPoint", "querySelector", "undefined", "createCache", "key"],
+      mappings: ";;;;+BAIA,+FAA+F;AAC/F,iDAAiD;AACjD,qGAAqG;AACrG;;;eAAwBA;;;8DAPA;;;;;;AAExB,MAAMC,YAAY,OAAOC,aAAa;AAKvB,SAASF;IACtB,IAAIG;IAEJ,IAAIF,WAAW;QACb,MAAMG,wBAAwBF,SAASG,aAAa,CAClD;QAEFF,iBAAiBC,yBAAyBE;IAC5C;IAEA,OAAOC,IAAAA,cAAW,EAAC;QAAEC,KAAK;QAAaL;IAAe;AACxD"
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "cc66ab86d505cbc63c5139e82432ec6e4fe7ef23"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_28dkv5z6ih = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_28dkv5z6ih();
+cov_28dkv5z6ih().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/* istanbul ignore next */
+cov_28dkv5z6ih().s[1]++;
+Object.defineProperty(exports,
+// On the client side, Create a meta tag at the top of the <head> and set it as insertionPoint.
+// This assures that MUI styles are loaded first.
+// It allows developers to easily override MUI styles with other styling solutions, like CSS modules.
+"default", {
+  enumerable: true,
+  get: function () {
+    /* istanbul ignore next */
+    cov_28dkv5z6ih().f[0]++;
+    cov_28dkv5z6ih().s[2]++;
+    return createEmotionCache;
+  }
+});
+const _cache =
+/* istanbul ignore next */
+(/*#__PURE__*/cov_28dkv5z6ih().s[3]++, _interop_require_default(require("@emotion/cache")));
+function _interop_require_default(obj) {
+  /* istanbul ignore next */
+  cov_28dkv5z6ih().f[1]++;
+  cov_28dkv5z6ih().s[4]++;
+  return /* istanbul ignore next */(cov_28dkv5z6ih().b[1][0]++, obj) &&
+  /* istanbul ignore next */
+  (cov_28dkv5z6ih().b[1][1]++, obj.__esModule) ?
+  /* istanbul ignore next */
+  (cov_28dkv5z6ih().b[0][0]++, obj) :
+  /* istanbul ignore next */
+  (cov_28dkv5z6ih().b[0][1]++, {
+    default: obj
+  });
+}
+const isBrowser =
+/* istanbul ignore next */
+(cov_28dkv5z6ih().s[5]++, typeof document !== 'undefined');
+function createEmotionCache() {
+  /* istanbul ignore next */
+  cov_28dkv5z6ih().f[2]++;
+  let insertionPoint;
+  /* istanbul ignore next */
+  cov_28dkv5z6ih().s[6]++;
+  if (isBrowser) {
+    /* istanbul ignore next */
+    cov_28dkv5z6ih().b[2][0]++;
+    const emotionInsertionPoint =
+    /* istanbul ignore next */
+    (cov_28dkv5z6ih().s[7]++, document.querySelector('meta[name="emotion-insertion-point"]'));
+    /* istanbul ignore next */
+    cov_28dkv5z6ih().s[8]++;
+    insertionPoint =
+    /* istanbul ignore next */
+    (cov_28dkv5z6ih().b[3][0]++, emotionInsertionPoint) ??
+    /* istanbul ignore next */
+    (cov_28dkv5z6ih().b[3][1]++, undefined);
+  } else
+  /* istanbul ignore next */
+  {
+    cov_28dkv5z6ih().b[2][1]++;
+  }
+  cov_28dkv5z6ih().s[9]++;
+  return (0, _cache.default)({
+    key: 'mui-style',
+    insertionPoint
+  });
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjcmVhdGVFbW90aW9uQ2FjaGUiLCJpc0Jyb3dzZXIiLCJjb3ZfMjhka3Y1ejZpaCIsInMiLCJkb2N1bWVudCIsImYiLCJpbnNlcnRpb25Qb2ludCIsImIiLCJlbW90aW9uSW5zZXJ0aW9uUG9pbnQiLCJxdWVyeVNlbGVjdG9yIiwidW5kZWZpbmVkIiwiX2NhY2hlIiwiZGVmYXVsdCIsImtleSJdLCJzb3VyY2VzIjpbIi9Vc2Vycy9zZWFvZmNoYW9zL1Byb2plY3RzL25leHQtbWFwL3NyYy9saWIvY3JlYXRlRW1vdGlvbkNhY2hlLnRzIl0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBjcmVhdGVDYWNoZSBmcm9tICdAZW1vdGlvbi9jYWNoZSc7XG5cbmNvbnN0IGlzQnJvd3NlciA9IHR5cGVvZiBkb2N1bWVudCAhPT0gJ3VuZGVmaW5lZCc7XG5cbi8vIE9uIHRoZSBjbGllbnQgc2lkZSwgQ3JlYXRlIGEgbWV0YSB0YWcgYXQgdGhlIHRvcCBvZiB0aGUgPGhlYWQ+IGFuZCBzZXQgaXQgYXMgaW5zZXJ0aW9uUG9pbnQuXG4vLyBUaGlzIGFzc3VyZXMgdGhhdCBNVUkgc3R5bGVzIGFyZSBsb2FkZWQgZmlyc3QuXG4vLyBJdCBhbGxvd3MgZGV2ZWxvcGVycyB0byBlYXNpbHkgb3ZlcnJpZGUgTVVJIHN0eWxlcyB3aXRoIG90aGVyIHN0eWxpbmcgc29sdXRpb25zLCBsaWtlIENTUyBtb2R1bGVzLlxuZXhwb3J0IGRlZmF1bHQgZnVuY3Rpb24gY3JlYXRlRW1vdGlvbkNhY2hlKCkge1xuICBsZXQgaW5zZXJ0aW9uUG9pbnQ7XG5cbiAgaWYgKGlzQnJvd3Nlcikge1xuICAgIGNvbnN0IGVtb3Rpb25JbnNlcnRpb25Qb2ludCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3I8SFRNTE1ldGFFbGVtZW50PihcbiAgICAgICdtZXRhW25hbWU9XCJlbW90aW9uLWluc2VydGlvbi1wb2ludFwiXSdcbiAgICApO1xuICAgIGluc2VydGlvblBvaW50ID0gZW1vdGlvbkluc2VydGlvblBvaW50ID8/IHVuZGVmaW5lZDtcbiAgfVxuXG4gIHJldHVybiBjcmVhdGVDYWNoZSh7IGtleTogJ211aS1zdHlsZScsIGluc2VydGlvblBvaW50IH0pO1xufVxuIl0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQUlBO0FBQ0E7QUFDQTtBQUNBOzs7Ozs7V0FBd0JBLGtCQUFBOzs7Ozt3RUFQQTs7Ozs7Ozs7Ozs7Ozs7O0FBRXhCLE1BQU1DLFNBQUE7QUFBQTtBQUFBLENBQUFDLGNBQUEsR0FBQUMsQ0FBQSxPQUFZLE9BQU9DLFFBQUEsS0FBYTtBQUt2QixTQUFTSixtQkFBQTtFQUFBO0VBQUFFLGNBQUEsR0FBQUcsQ0FBQTtFQUN0QixJQUFJQyxjQUFBO0VBQUE7RUFBQUosY0FBQSxHQUFBQyxDQUFBO0VBRUosSUFBSUYsU0FBQSxFQUFXO0lBQUE7SUFBQUMsY0FBQSxHQUFBSyxDQUFBO0lBQ2IsTUFBTUMscUJBQUE7SUFBQTtJQUFBLENBQUFOLGNBQUEsR0FBQUMsQ0FBQSxPQUF3QkMsUUFBQSxDQUFTSyxhQUFhLENBQ2xEO0lBQUE7SUFBQVAsY0FBQSxHQUFBQyxDQUFBO0lBRUZHLGNBQUE7SUFBaUI7SUFBQSxDQUFBSixjQUFBLEdBQUFLLENBQUEsVUFBQUMscUJBQUE7SUFBQTtJQUFBLENBQUFOLGNBQUEsR0FBQUssQ0FBQSxVQUF5QkcsU0FBQTtFQUM1QztFQUFBO0VBQUE7SUFBQVIsY0FBQSxHQUFBSyxDQUFBO0VBQUE7RUFBQUwsY0FBQSxHQUFBQyxDQUFBO0VBRUEsT0FBTyxJQUFBUSxNQUFBLENBQUFDLE9BQVcsRUFBQztJQUFFQyxHQUFBLEVBQUs7SUFBYVA7RUFBZTtBQUN4RCIsImlnbm9yZUxpc3QiOltdfQ==
