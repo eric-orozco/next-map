@@ -1,6 +1,15 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import ThemeProviderWrapper from '@/components/ThemeProvider';
 import './globals.css';
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#1976d2' },
+    { media: '(prefers-color-scheme: dark)', color: '#90caf9' },
+  ],
+};
 
 export const metadata: Metadata = {
   title: 'Next Map - Advanced 3D Mapping with VR Support',
@@ -8,11 +17,6 @@ export const metadata: Metadata = {
     'Showcase of modern web technologies with performant 3D mapping capabilities, VR integration, and responsive design',
   keywords: '3D mapping, VR, MapLibre, Next.js, React, TypeScript, Material UI',
   authors: [{ name: 'Next Map Team' }],
-  viewport: 'width=device-width, initial-scale=1',
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#1976d2' },
-    { media: '(prefers-color-scheme: dark)', color: '#90caf9' },
-  ],
   openGraph: {
     title: 'Next Map - Advanced 3D Mapping',
     description:
