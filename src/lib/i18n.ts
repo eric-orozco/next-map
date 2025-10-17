@@ -64,7 +64,11 @@ i18n
 
     // Add critical translations for immediate availability
     resources: {
-      en: criticalTranslations.en,
+      en: {
+        common: criticalTranslations.en.common,
+        navigation: criticalTranslations.en.navigation,
+        homepage: criticalTranslations.en.homepage,
+      },
     },
 
     // Preload namespaces for better SSR
