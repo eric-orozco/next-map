@@ -360,6 +360,8 @@ next-map/
 ├── jest.config.js         # Jest testing configuration
 ├── playwright.config.ts   # Playwright E2E configuration
 ├── next.config.ts         # Next.js configuration
+├── vercel.json            # Vercel deployment configuration
+├── .vercelignore          # Files to ignore during Vercel deployment
 └── package.json           # Dependencies and scripts
 ```
 
@@ -566,9 +568,10 @@ vercel --prod
 ```
 
 #### GitHub Actions Integration:
-- Add `VERCEL_TOKEN`, `VERCEL_ORG_ID`, and `VERCEL_PROJECT_ID` to GitHub secrets
+- Add `VERCEL_TOKEN` to GitHub secrets (simplified setup)
 - Automatic deployments on every push to main
-- Preview deployments for pull requests
+- Preview deployments for pull requests with rich PR comments
+- Uses official Vercel CLI for reliable deployments
 
 > **📚 Detailed Guide**: See [DEPLOYMENT.md](./DEPLOYMENT.md) for complete setup instructions
 

@@ -22,36 +22,45 @@ This will:
 
 For automatic deployments on every push, set up GitHub secrets:
 
-### Step 1: Get Vercel Project Info
+### Step 1: Deploy Manually First
 
 ```bash
-# Link your local project to Vercel
-vercel link
+# Deploy to create Vercel project
+vercel --prod
 
-# This creates .vercel/project.json with your project details
-cat .vercel/project.json
+# This will create .vercel/project.json automatically
 ```
 
 ### Step 2: Get Vercel Token
 
 1. Go to [Vercel Dashboard](https://vercel.com/account/tokens)
-2. Create a new token
+2. Create a new token with appropriate scopes
 3. Copy the token value
 
-### Step 3: Add GitHub Secrets
+### Step 3: Add GitHub Secret
 
 Go to your GitHub repo → Settings → Secrets and variables → Actions
 
-Add these secrets:
+Add this secret:
 - `VERCEL_TOKEN`: Your Vercel token from step 2
-- `VERCEL_ORG_ID`: From `.vercel/project.json` (orgId field)
-- `VERCEL_PROJECT_ID`: From `.vercel/project.json` (projectId field)
+
+**Note**: With the new official approach, you only need the `VERCEL_TOKEN`. The project information is automatically pulled from Vercel during deployment.
 
 ### Step 4: Enable Automatic Deployments
 
-Once secrets are added, GitHub Actions will automatically:
-- Deploy preview environments for pull requests
-- Deploy to production on pushes to main branch
+Once the `VERCEL_TOKEN` secret is added, GitHub Actions will automatically:
+- **Preview Deployments**: Every pull request gets a unique preview URL
+- **Production Deployments**: Pushes to main branch deploy to production
+- **Environment Sync**: Vercel environment variables are automatically pulled
+- **Optimized Builds**: Uses Vercel's build system for maximum performance
+
+### New GitHub Actions Workflow Benefits
+
+✅ **Official Vercel CLI**: Uses `vercel` command directly (not third-party actions)
+✅ **Better Environment Handling**: Automatic environment variable sync
+✅ **Improved Reliability**: Direct integration with Vercel's deployment system
+✅ **Enhanced PR Comments**: Rich preview deployment information
+✅ **Proper Build Optimization**: Uses Vercel's native build process
 
 ## 🌐 Vercel Features for Next.js
 
