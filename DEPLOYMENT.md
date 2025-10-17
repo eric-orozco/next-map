@@ -19,6 +19,22 @@ This will:
 - Deploy with full SSR, API routes, and optimizations
 - Give you a production URL
 
+## 📋 Vercel Plan Compatibility
+
+**Free Plan (Hobby):**
+
+- Single region deployment (automatically assigned by Vercel)
+- No multi-region configuration allowed
+- Perfect for development and small production apps
+
+**Pro/Enterprise Plans:**
+
+- Multi-region deployment support
+- Custom region configuration via `vercel.json`
+- Lower latency for global users
+
+The project is configured to work with the free plan by default.
+
 ## 🔧 GitHub Actions Integration (Optional)
 
 For automatic deployments on every push, set up GitHub secrets:
