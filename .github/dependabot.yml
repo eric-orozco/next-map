@@ -1,0 +1,114 @@
+# Dependabot configuration for automated dependency updates
+# https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
+
+version: 2
+updates:
+  # Enable version updates for npm (covers pnpm as well)
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "America/Los_Angeles"
+    # Group updates by type to reduce PR noise
+    groups:
+      # Group all non-major React ecosystem updates
+      react-ecosystem:
+        patterns:
+          - "react*"
+          - "@types/react*"
+          - "next"
+        update-types:
+          - "minor"
+          - "patch"
+      # Group all non-major testing dependencies
+      testing:
+        patterns:
+          - "jest*"
+          - "@testing-library/*"
+          - "playwright*"
+          - "@playwright/*"
+        update-types:
+          - "minor"
+          - "patch"
+      # Group all non-major build tools
+      build-tools:
+        patterns:
+          - "eslint*"
+          - "@typescript-eslint/*"
+          - "typescript"
+          - "prettier*"
+          - "postcss*"
+          - "tailwindcss*"
+        update-types:
+          - "minor"
+          - "patch"
+      # Group all non-major UI dependencies
+      ui-libraries:
+        patterns:
+          - "@mui/*"
+          - "@emotion/*"
+          - "maplibre-gl*"
+        update-types:
+          - "minor"
+          - "patch"
+      # Group all non-major i18n dependencies
+      internationalization:
+        patterns:
+          - "i18next*"
+          - "react-i18next*"
+        update-types:
+          - "minor"
+          - "patch"
+    # Security updates configuration
+    open-pull-requests-limit: 10
+    reviewers:
+      - "eric-orozco"
+    assignees:
+      - "eric-orozco"
+    commit-message:
+      prefix: "deps"
+      prefix-development: "deps-dev"
+      include: "scope"
+    # Only create PRs for security updates on weekends
+    allow:
+      - dependency-type: "direct"
+      - dependency-type: "indirect"
+    # Ignore specific packages if needed
+    ignore:
+      # Ignore major version updates for stable packages
+      - dependency-name: "node"
+        update-types: ["version-update:semver-major"]
+
+  # Enable security updates for GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "America/Los_Angeles"
+    commit-message:
+      prefix: "ci"
+      include: "scope"
+    reviewers:
+      - "eric-orozco"
+    assignees:
+      - "eric-orozco"
+
+  # Enable security updates for Docker (if we add Dockerfile later)
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "America/Los_Angeles"
+    commit-message:
+      prefix: "docker"
+      include: "scope"
+    reviewers:
+      - "eric-orozco"
+    assignees:
+      - "eric-orozco"
