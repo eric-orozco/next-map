@@ -32,7 +32,8 @@ export const criticalTranslations = {
     homepage: {
       title: 'Next Map',
       subtitle: 'Advanced 3D Mapping with VR Support',
-      heroDescription: 'Showcase of cutting-edge web technologies including MapLibre GL JS, Material UI, Next.js 15, React 19, TypeScript, and WebXR integration. Built for modern browsers with mobile-first responsive design.',
+      heroDescription:
+        'Showcase of cutting-edge web technologies including MapLibre GL JS, Material UI, Next.js 15, React 19, TypeScript, and WebXR integration. Built for modern browsers with mobile-first responsive design.',
       exploreMaps: 'Explore Maps',
       viewSource: 'View Source',
       technologyShowcase: 'Technology Showcase',
@@ -40,27 +41,33 @@ export const criticalTranslations = {
       features: {
         advancedMapping: {
           title: 'Advanced Mapping',
-          description: 'Powered by MapLibre GL JS with custom vector tiles and real-time data visualization.',
+          description:
+            'Powered by MapLibre GL JS with custom vector tiles and real-time data visualization.',
         },
         '3dVisualization': {
           title: '3D Visualization',
-          description: 'Interactive 3D terrain rendering with customizable elevation and lighting effects.',
+          description:
+            'Interactive 3D terrain rendering with customizable elevation and lighting effects.',
         },
         vrIntegration: {
           title: 'VR Integration',
-          description: 'Immersive VR experience compatible with major VR headsets using WebXR API.',
+          description:
+            'Immersive VR experience compatible with major VR headsets using WebXR API.',
         },
         internationalization: {
           title: 'Internationalization',
-          description: 'Multi-language support with dynamic locale switching and RTL text support.',
+          description:
+            'Multi-language support with dynamic locale switching and RTL text support.',
         },
         authentication: {
           title: 'Authentication',
-          description: 'Secure authentication with OAuth providers and JWT-based session management.',
+          description:
+            'Secure authentication with OAuth providers and JWT-based session management.',
         },
         performance: {
           title: 'Performance',
-          description: 'Optimized for speed with code splitting, lazy loading, and service workers.',
+          description:
+            'Optimized for speed with code splitting, lazy loading, and service workers.',
         },
       },
     },

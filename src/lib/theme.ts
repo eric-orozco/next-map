@@ -43,7 +43,8 @@ export const lightTheme: Theme = createTheme({
       fontSize: '2.5rem',
       fontWeight: 700,
       lineHeight: 1.2,
-      fontFamily: 'var(--font-orbitron), var(--font-inter), "Roboto", sans-serif',
+      fontFamily:
+        'var(--font-orbitron), var(--font-inter), "Roboto", sans-serif',
     },
     h2: {
       fontSize: '2rem',
