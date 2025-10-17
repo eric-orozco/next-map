@@ -38,11 +38,12 @@ export const lightTheme: Theme = createTheme({
     },
   },
   typography: {
-    fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
+    fontFamily: 'var(--font-inter), "Roboto", "Helvetica", "Arial", sans-serif',
     h1: {
       fontSize: '2.5rem',
       fontWeight: 700,
       lineHeight: 1.2,
+      fontFamily: 'var(--font-orbitron), var(--font-inter), "Roboto", sans-serif',
     },
     h2: {
       fontSize: '2rem',

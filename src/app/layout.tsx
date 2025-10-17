@@ -1,6 +1,22 @@
 import type { Metadata, Viewport } from 'next';
+import { Inter, Orbitron } from 'next/font/google';
 import ThemeProviderWrapper from '@/components/ThemeProvider';
 import './globals.css';
+
+// Font configurations
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-inter',
+  display: 'swap',
+});
+
+const orbitron = Orbitron({
+  subsets: ['latin'],
+  weight: ['400', '700', '900'],
+  variable: '--font-orbitron',
+  display: 'swap',
+});
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -58,12 +74,11 @@ export default function RootLayout({
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&display=swap"
-          rel="stylesheet"
-        />
       </head>
-      <body suppressHydrationWarning>
+      <body 
+        className={`${inter.variable} ${orbitron.variable}`} 
+        suppressHydrationWarning
+      >
         <ThemeProviderWrapper>{children}</ThemeProviderWrapper>
       </body>
     </html>
