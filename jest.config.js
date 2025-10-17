@@ -1,36 +1,37 @@
 /**
  * Jest Configuration for Next Map Project
- * 
+ *
  * This configuration extends Next.js's built-in Jest setup with custom
  * settings for our mapping application using MapLibre GL JS, Material UI,
  * and i18next internationalization.
  */
 
-import nextJest from 'next/jest.js'
+import nextJest from 'next/jest.js';
 
 const createJestConfig = nextJest({
   // Provide the path to your Next.js app to load next.config.js and .env files
   dir: './',
-})
+});
 
 // Custom Jest configuration
 const customJestConfig = {
   // Setup files
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
-  
+
   // Test environment
   testEnvironment: 'jest-environment-jsdom',
-  
+
   // Module name mappings (automatically synced with tsconfig.json paths)
   moduleNameMapper: {
     // Handle path aliases
     '^@/(.*)$': '<rootDir>/src/$1',
-    
+
     // Handle CSS imports (for components that import CSS)
     [String.raw`\.(css|less|scss|sass)$`]: 'identity-obj-proxy',
-    
+
     // Handle static file imports
-    [String.raw`\.(jpg|jpeg|png|gif|webp|svg)$`]: '<rootDir>/__mocks__/fileMock.js',
+    [String.raw`\.(jpg|jpeg|png|gif|webp|svg)$`]:
+      '<rootDir>/__mocks__/fileMock.js',
   },
 
   // Test file patterns
@@ -51,7 +52,10 @@ const customJestConfig = {
   // Transform configuration
   transform: {
     // Use next/jest to handle TypeScript and JSX files
-    [String.raw`^.+\.(js|jsx|ts|tsx)$`]: ['babel-jest', { presets: ['next/babel'] }],
+    [String.raw`^.+\.(js|jsx|ts|tsx)$`]: [
+      'babel-jest',
+      { presets: ['next/babel'] },
+    ],
   },
 
   // Files to ignore during transformation
@@ -84,12 +88,7 @@ const customJestConfig = {
   },
 
   // Coverage reporting
-  coverageReporters: [
-    'text',
-    'lcov',
-    'html',
-    'json-summary',
-  ],
+  coverageReporters: ['text', 'lcov', 'html', 'json-summary'],
 
   // Coverage directory
   coverageDirectory: 'coverage',
@@ -108,13 +107,13 @@ const customJestConfig = {
 
   // Watch mode settings
   watchman: true,
-  
+
   // Error handling
   errorOnDeprecated: true,
-  
+
   // Module directories
   moduleDirectories: ['node_modules', '<rootDir>/'],
-  
+
   // File extensions Jest should handle
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json'],
 
@@ -130,8 +129,8 @@ const customJestConfig = {
 
   // Cache directory
   cacheDirectory: '<rootDir>/.jest-cache',
-}
+};
 
 // Export the Jest configuration
 // createJestConfig is used to ensure Next.js config loading (async)
-export default createJestConfig(customJestConfig)
+export default createJestConfig(customJestConfig);

@@ -1,39 +1,46 @@
-'use client'
+'use client';
 
-import React from 'react'
-import { 
+import React from 'react';
+import {
   FormControl,
   InputLabel,
   Select,
   MenuItem,
-  SelectChangeEvent
-} from '@mui/material'
-import { useAppStore } from '@/stores/appStore'
-import { supportedLanguages, changeLanguage, getTextDirection, type SupportedLanguage } from '@/lib/i18n'
+  SelectChangeEvent,
+} from '@mui/material';
+import { useAppStore } from '@/stores/appStore';
+import {
+  supportedLanguages,
+  changeLanguage,
+  getTextDirection,
+  type SupportedLanguage,
+} from '@/lib/i18n';
 
 interface LanguageSelectorProps {
-  readonly variant?: 'standard' | 'outlined' | 'filled'
-  readonly size?: 'small' | 'medium'
+  readonly variant?: 'standard' | 'outlined' | 'filled';
+  readonly size?: 'small' | 'medium';
 }
 
-export default function LanguageSelector({ 
-  variant = 'outlined', 
-  size = 'small' 
+export default function LanguageSelector({
+  variant = 'outlined',
+  size = 'small',
 }: LanguageSelectorProps) {
-  const { language, setLanguage } = useAppStore()
+  const { language, setLanguage } = useAppStore();
 
   const handleLanguageChange = (event: SelectChangeEvent) => {
-    const newLanguage = event.target.value as SupportedLanguage
-    setLanguage(newLanguage)
-    
+    const newLanguage = event.target.value as SupportedLanguage;
+    setLanguage(newLanguage);
+
     // Use the centralized changeLanguage function
-    changeLanguage(newLanguage).then(() => {
-      // Set HTML dir attribute and lang using centralized function
-      const textDirection = getTextDirection()
-      document.documentElement.dir = textDirection
-      document.documentElement.lang = newLanguage
-    }).catch(console.error)
-  }
+    changeLanguage(newLanguage)
+      .then(() => {
+        // Set HTML dir attribute and lang using centralized function
+        const textDirection = getTextDirection();
+        document.documentElement.dir = textDirection;
+        document.documentElement.lang = newLanguage;
+      })
+      .catch(console.error);
+  };
 
   return (
     <FormControl variant={variant} size={size} sx={{ minWidth: 120 }}>
@@ -44,7 +51,7 @@ export default function LanguageSelector({
         onChange={handleLanguageChange}
         label="Language"
       >
-        {supportedLanguages.map((lang) => (
+        {supportedLanguages.map(lang => (
           <MenuItem key={lang.code} value={lang.code}>
             <span style={{ marginRight: 8 }}>{lang.flag}</span>
             {lang.name}
@@ -52,5 +59,5 @@ export default function LanguageSelector({
         ))}
       </Select>
     </FormControl>
-  )
+  );
 }

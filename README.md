@@ -1,29 +1,33 @@
 # Next Map - Advanced 3D Mapping with VR Support
 
-Modern Web App Skill 
+Modern Web App Skill
 
 ![Next Map Preview](https://via.placeholder.com/800x400/1976d2/ffffff?text=Next+Map+Preview)
 
 ## 🚀 Features
 
 ### Core Mapping Features
+
 - **Advanced 3D Mapping** - Powered by MapLibre GL JS with custom vector tiles
 - **VR Integration** - WebXR-compatible VR experience for immersive mapping
 - **Real-time Data Visualization** - Dynamic map layers and interactive markers
 - **Custom Map Styles** - Multiple themes including light, dark, and cyberpunk modes
 
 ### User Experience
+
 - **Mobile-First Responsive Design** - Optimized for mobile, tablet, and desktop
 - **Material UI Components** - Modern, accessible component library
 - **Multiple Themes** - Light, dark, and cyberpunk themes with smooth transitions
 - **Internationalization** - Multi-language support (English, Spanish, French)
 
 ### Authentication & Security
+
 - **NextAuth.js Integration** - Secure authentication with OAuth providers
 - **JWT Session Management** - Stateless authentication with secure tokens
 - **PostgreSQL Database** - Robust data persistence with Prisma ORM
 
 ### Performance & Development
+
 - **Next.js 15 with Turbopack** - Latest Next.js with ultra-fast bundling
 - **TypeScript** - Full type safety throughout the application
 - **pnpm Package Manager** - Fastest and most efficient package management
@@ -32,6 +36,7 @@ Modern Web App Skill
 ## 🛠 Technology Stack
 
 ### Frontend
+
 - **Next.js 15** - React framework with App Router
 - **React 19** - Latest React with concurrent features
 - **TypeScript** - Type-safe development
@@ -41,6 +46,7 @@ Modern Web App Skill
 - **Framer Motion** - Smooth animations and transitions
 
 ### State Management & Data
+
 - **Zustand** - Lightweight state management
 - **React Hook Form** - Performant form handling
 - **Zod** - Schema validation
@@ -48,11 +54,13 @@ Modern Web App Skill
 - **PostgreSQL** - Robust relational database
 
 ### Authentication & Internationalization
+
 - **NextAuth.js** - Complete authentication solution
 - **i18next** - Internationalization framework
 - **React i18next** - React integration for i18n
 
 ### Testing & Quality
+
 - **Jest** - Unit testing framework
 - **Testing Library** - React component testing
 - **Playwright** - End-to-end testing
@@ -60,6 +68,7 @@ Modern Web App Skill
 - **TypeScript** - Static type checking
 
 ### DevOps & Performance
+
 - **pnpm** - Fast, disk space efficient package manager
 - **Turbopack** - Next-generation bundler
 - **PWA Ready** - Progressive web app capabilities
@@ -68,6 +77,7 @@ Modern Web App Skill
 ## ✅ Project Status
 
 ### 🎯 Latest Updates (September 2025)
+
 - ✅ **Upgraded to React 19** - Latest React with concurrent features
 - ✅ **Updated to Material UI v7** - Latest component library version
 - ✅ **Removed Three.js Dependencies** - Clean architecture focused on MapLibre 3D
@@ -76,9 +86,11 @@ Modern Web App Skill
 - ✅ **Enhanced i18n System** - Comprehensive translation coverage across all components
 
 ### 🌍 Language Support
+
 The application now supports **9 languages** with complete translations:
+
 - 🇺🇸 **English** (Primary)
-- 🇪🇸 **Spanish** 
+- 🇪🇸 **Spanish**
 - 🇫🇷 **French**
 - 🇨🇳 **Chinese (Simplified)**
 - 🇯🇵 **Japanese**
@@ -88,6 +100,7 @@ The application now supports **9 languages** with complete translations:
 - 🇸🇦 **Arabic (Saudi Arabia)** with RTL support
 
 ### 🏗 Architecture Highlights
+
 - **Modern React Stack** - React 19 + Next.js 15 + TypeScript
 - **3D Mapping** - MapLibre GL JS with terrain visualization (no Three.js conflicts)
 - **Performance Optimized** - pnpm + Turbopack for lightning-fast builds
@@ -96,6 +109,7 @@ The application now supports **9 languages** with complete translations:
 ## 🚀 Quick Start
 
 ### Prerequisites
+
 - Node.js 18+
 - pnpm (recommended) or npm
 - PostgreSQL database
@@ -103,22 +117,26 @@ The application now supports **9 languages** with complete translations:
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/yourusername/next-map.git
    cd next-map
    ```
 
 2. **Install dependencies**
+
    ```bash
    pnpm install
    ```
 
 3. **Environment Setup**
+
    ```bash
    cp .env.local.example .env.local
    ```
-   
+
    Update `.env.local` with your configuration:
+
    ```env
    DATABASE_URL="postgresql://username:password@localhost:5432/nextmap"
    NEXTAUTH_SECRET="your-secret-key"
@@ -126,12 +144,14 @@ The application now supports **9 languages** with complete translations:
    ```
 
 4. **Database Setup**
+
    ```bash
    pnpm db:generate
    pnpm db:push
    ```
 
 5. **Start Development Server**
+
    ```bash
    pnpm dev
    ```
@@ -141,12 +161,14 @@ The application now supports **9 languages** with complete translations:
 ## 📜 Available Scripts
 
 ### Development
+
 - `pnpm dev` - Start development server with Turbopack
 - `pnpm build` - Build production application
 - `pnpm start` - Start production server
 - `pnpm lint` - Run ESLint
 
 ### Testing
+
 - `pnpm test` - Run Jest tests in watch mode
 - `pnpm test:ci` - Run Jest tests once
 - `pnpm test:coverage` - Run tests with coverage report
@@ -154,12 +176,14 @@ The application now supports **9 languages** with complete translations:
 - `pnpm test:e2e:ui` - Run Playwright tests with UI mode
 
 ### Database
+
 - `pnpm db:generate` - Generate Prisma client
 - `pnpm db:push` - Push schema changes to database
 - `pnpm db:migrate` - Run database migrations
 - `pnpm db:studio` - Open Prisma Studio
 
 ### Quality Assurance
+
 - `pnpm type-check` - Run TypeScript type checking
 
 ## 🏗 Project Structure
@@ -194,7 +218,7 @@ The application supports multiple themes to showcase design flexibility:
 ## � Internationalization
 
 - **English (EN)** - Primary language
-- **Spanish (ES)** - Full translation support  
+- **Spanish (ES)** - Full translation support
 - **French (FR)** - Full translation support
 - **Chinese Simplified (ZH-CN)** - Full translation support
 - **Japanese (JA)** - Full translation support
@@ -210,12 +234,14 @@ The application supports multiple themes to showcase design flexibility:
 ## 🧪 Testing Strategy
 
 ### Unit Tests (Jest + Testing Library)
+
 - Component testing with React Testing Library
 - Custom hooks testing
 - Utility function testing
 - 80%+ code coverage target
 
 ### E2E Tests (Playwright)
+
 - Cross-browser testing (Chrome, Firefox, Safari)
 - Mobile responsive testing
 - User journey testing
@@ -224,17 +250,20 @@ The application supports multiple themes to showcase design flexibility:
 ## 🚀 Deployment
 
 ### Vercel (Recommended)
+
 ```bash
 npx vercel --prod
 ```
 
 ### Docker
+
 ```bash
 docker build -t next-map .
 docker run -p 3000:3000 next-map
 ```
 
 ### Manual Deployment
+
 ```bash
 pnpm build
 pnpm start

@@ -1,21 +1,21 @@
 /**
  * Jest Setup File for Next Map Project
- * 
+ *
  * This file runs before each test and sets up the testing environment
  * with necessary mocks and global configurations.
  */
 
 // Import Jest DOM matchers
-import '@testing-library/jest-dom'
+import '@testing-library/jest-dom';
 
 // Mock i18next modules for testing
-jest.mock('i18next-http-backend', () => ({}))
-jest.mock('i18next-browser-languagedetector', () => ({}))
+jest.mock('i18next-http-backend', () => ({}));
+jest.mock('i18next-browser-languagedetector', () => ({}));
 
 // Mock react-i18next with improved translation handling
 jest.mock('react-i18next', () => ({
   useTranslation: (namespace = 'common') => ({
-    t: (key) => {
+    t: key => {
       // Handle namespace:key format
       const translations = {
         'common:welcome': 'Welcome to Next Map',
@@ -28,11 +28,11 @@ jest.mock('react-i18next', () => ({
         'errors:generic': 'An unexpected error occurred',
         'homepage:hero.title': 'Welcome to Next Map',
         'homepage:hero.subtitle': 'Explore the world in 3D',
-      }
-      
+      };
+
       // If key doesn't contain namespace, prepend the current namespace
-      const fullKey = key.includes(':') ? key : `${namespace}:${key}`
-      return translations[fullKey] || key
+      const fullKey = key.includes(':') ? key : `${namespace}:${key}`;
+      return translations[fullKey] || key;
     },
     i18n: {
       language: 'en',
@@ -46,7 +46,7 @@ jest.mock('react-i18next', () => ({
     type: '3rdParty',
     init: jest.fn(),
   },
-}))
+}));
 
 // Mock our consolidated i18n utilities
 jest.mock('@/lib/i18n', () => ({
@@ -54,7 +54,7 @@ jest.mock('@/lib/i18n', () => ({
   default: {
     language: 'en',
     changeLanguage: jest.fn().mockResolvedValue(undefined),
-    t: jest.fn((key) => key),
+    t: jest.fn(key => key),
   },
   supportedLanguages: [
     { code: 'en', name: 'English', flag: '🇺🇸' },
@@ -63,7 +63,9 @@ jest.mock('@/lib/i18n', () => ({
   ],
   changeLanguage: jest.fn().mockResolvedValue(true),
   getCurrentLanguage: jest.fn().mockReturnValue('en'),
-  getLanguageInfo: jest.fn().mockReturnValue({ code: 'en', name: 'English', flag: '🇺🇸' }),
+  getLanguageInfo: jest
+    .fn()
+    .mockReturnValue({ code: 'en', name: 'English', flag: '🇺🇸' }),
   isLanguageSupported: jest.fn().mockReturnValue(true),
   getBrowserLanguage: jest.fn().mockReturnValue('en'),
   formatDate: jest.fn().mockReturnValue('January 1, 2024'),
@@ -71,7 +73,7 @@ jest.mock('@/lib/i18n', () => ({
   formatCurrency: jest.fn().mockReturnValue('$1,000.00'),
   getTextDirection: jest.fn().mockReturnValue('ltr'),
   translateWithFallback: jest.fn((key, fallback) => fallback),
-}))
+}));
 
 // Mock next/router
 jest.mock('next/router', () => ({
@@ -92,9 +94,9 @@ jest.mock('next/router', () => ({
         off: jest.fn(),
         emit: jest.fn(),
       },
-    }
+    };
   },
-}))
+}));
 
 // Mock next/navigation for App Router
 jest.mock('next/navigation', () => ({
@@ -106,15 +108,15 @@ jest.mock('next/navigation', () => ({
       back: jest.fn(),
       forward: jest.fn(),
       refresh: jest.fn(),
-    }
+    };
   },
   useSearchParams() {
-    return new URLSearchParams()
+    return new URLSearchParams();
   },
   usePathname() {
-    return '/'
+    return '/';
   },
-}))
+}));
 
 // Mock MapLibre GL JS
 jest.mock('maplibre-gl', () => ({
@@ -142,27 +144,29 @@ jest.mock('maplibre-gl', () => ({
   NavigationControl: jest.fn(),
   GeolocateControl: jest.fn(),
   ScaleControl: jest.fn(),
-}))
+}));
 
 // Mock react-map-gl/maplibre
 jest.mock('react-map-gl/maplibre', () => ({
   Map: jest.fn(({ children, ...props }) => (
-    <div data-testid="map" {...props}>{children}</div>
+    <div data-testid="map" {...props}>
+      {children}
+    </div>
   )),
   NavigationControl: () => <div data-testid="navigation-control" />,
   GeolocateControl: () => <div data-testid="geolocate-control" />,
   ScaleControl: () => <div data-testid="scale-control" />,
-}))
+}));
 
 // Global test utilities
 globalThis.ResizeObserver = jest.fn().mockImplementation(() => ({
   observe: jest.fn(),
   unobserve: jest.fn(),
   disconnect: jest.fn(),
-}))
+}));
 
 globalThis.IntersectionObserver = jest.fn().mockImplementation(() => ({
   observe: jest.fn(),
   unobserve: jest.fn(),
   disconnect: jest.fn(),
-}))
+}));

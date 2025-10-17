@@ -6,30 +6,30 @@
 export const criticalTranslations = {
   en: {
     navigation: {
-      home: "Home",
-      explore: "Explore", 
-      create: "Create",
-      dashboard: "Dashboard",
-      maps: "Maps",
-      library: "My Library",
-      favorites: "Favorites",
-      trending: "Trending",
-      recent: "Recent",
-      public: "Public Maps",
-      private: "Private Maps",
-      shared: "Shared with Me"
+      home: 'Home',
+      explore: 'Explore',
+      create: 'Create',
+      dashboard: 'Dashboard',
+      maps: 'Maps',
+      library: 'My Library',
+      favorites: 'Favorites',
+      trending: 'Trending',
+      recent: 'Recent',
+      public: 'Public Maps',
+      private: 'Private Maps',
+      shared: 'Shared with Me',
     },
     common: {
-      welcome: "Welcome to Next Map",
-      loading: "Loading...",
-      error: "Error",
-      save: "Save",
-      cancel: "Cancel",
-      delete: "Delete",
-      edit: "Edit",
-      close: "Close"
-    }
-  }
-} as const
+      welcome: 'Welcome to Next Map',
+      loading: 'Loading...',
+      error: 'Error',
+      save: 'Save',
+      cancel: 'Cancel',
+      delete: 'Delete',
+      edit: 'Edit',
+      close: 'Close',
+    },
+  },
+} as const;
 
-export type CriticalTranslations = typeof criticalTranslations
+export type CriticalTranslations = typeof criticalTranslations;

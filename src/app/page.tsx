@@ -1,33 +1,33 @@
-'use client'
+'use client';
 
-import React from 'react'
-import { 
-  Box, 
-  Container, 
-  Typography, 
-  Grid, 
-  Card, 
+import React from 'react';
+import {
+  Box,
+  Container,
+  Typography,
+  Grid,
+  Card,
   CardContent,
   Button,
   Chip,
   Paper,
-  useTheme
-} from '@mui/material'
-import { 
-  Map as MapIcon, 
-  ThreeDRotation, 
-  ViewInAr, 
+  useTheme,
+} from '@mui/material';
+import {
+  Map as MapIcon,
+  ThreeDRotation,
+  ViewInAr,
   Language,
   Security,
-  Speed
-} from '@mui/icons-material'
-import { useTranslation } from 'react-i18next'
-import Navigation from '@/components/Navigation'
-import MapComponent from '@/components/MapComponent'
+  Speed,
+} from '@mui/icons-material';
+import { useTranslation } from 'react-i18next';
+import Navigation from '@/components/Navigation';
+import MapComponent from '@/components/MapComponent';
 
 export default function Home() {
-  const theme = useTheme()
-  const { t } = useTranslation('homepage')
+  const theme = useTheme();
+  const { t } = useTranslation('homepage');
 
   const features = [
     {
@@ -35,57 +35,58 @@ export default function Home() {
       icon: <MapIcon color="primary" />,
       title: t('features.advancedMapping.title'),
       description: t('features.advancedMapping.description'),
-      technologies: ['MapLibre', 'Vector Tiles', 'WebGL']
+      technologies: ['MapLibre', 'Vector Tiles', 'WebGL'],
     },
     {
       id: '3d-visualization',
       icon: <ThreeDRotation color="primary" />,
       title: t('features.3dVisualization.title'),
       description: t('features.3dVisualization.description'),
-      technologies: ['MapLibre 3D', 'WebGL', 'Terrain']
+      technologies: ['MapLibre 3D', 'WebGL', 'Terrain'],
     },
     {
       id: 'vr-integration',
       icon: <ViewInAr color="primary" />,
       title: t('features.vrIntegration.title'),
       description: t('features.vrIntegration.description'),
-      technologies: ['WebXR', 'VR', 'Immersive Web']
+      technologies: ['WebXR', 'VR', 'Immersive Web'],
     },
     {
       id: 'internationalization',
       icon: <Language color="primary" />,
       title: t('features.internationalization.title'),
       description: t('features.internationalization.description'),
-      technologies: ['i18next', 'RTL', 'Localization']
+      technologies: ['i18next', 'RTL', 'Localization'],
     },
     {
       id: 'authentication',
       icon: <Security color="primary" />,
       title: t('features.authentication.title'),
       description: t('features.authentication.description'),
-      technologies: ['NextAuth', 'OAuth', 'JWT']
+      technologies: ['NextAuth', 'OAuth', 'JWT'],
     },
     {
       id: 'performance',
       icon: <Speed color="primary" />,
       title: t('features.performance.title'),
       description: t('features.performance.description'),
-      technologies: ['Next.js', 'Turbopack', 'PWA']
-    }
-  ]
+      technologies: ['Next.js', 'Turbopack', 'PWA'],
+    },
+  ];
 
   return (
     <>
       <Navigation />
-      
+
       {/* Hero Section */}
       <Box
         sx={{
           pt: 10, // Account for fixed AppBar
           pb: 4,
-          background: theme.palette.mode === 'dark' 
-            ? 'linear-gradient(135deg, #1a1a1a 0%, #2d1b69 100%)'
-            : 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+          background:
+            theme.palette.mode === 'dark'
+              ? 'linear-gradient(135deg, #1a1a1a 0%, #2d1b69 100%)'
+              : 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
           color: 'white',
           minHeight: '60vh',
           display: 'flex',
@@ -187,9 +188,9 @@ export default function Home() {
         >
           {t('technologyShowcase')}
         </Typography>
-        
+
         <Grid container spacing={4}>
-          {features.map((feature) => (
+          {features.map(feature => (
             <Grid size={{ xs: 12, md: 6, lg: 4 }} key={feature.id}>
               <Card
                 elevation={2}
@@ -223,7 +224,7 @@ export default function Home() {
                     {feature.description}
                   </Typography>
                   <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
-                    {feature.technologies.map((tech) => (
+                    {feature.technologies.map(tech => (
                       <Chip
                         key={tech}
                         label={tech}
@@ -252,13 +253,22 @@ export default function Home() {
           >
             {t('builtWithModernStack')}
           </Typography>
-          
+
           <Grid container spacing={3} justifyContent="center">
             {[
-              'Next.js 15', 'React 19', 'TypeScript', 'Material UI', 
-              'MapLibre GL', 'Prisma', 'Zustand', 'i18next',
-              'Jest', 'Playwright', 'pnpm', 'Turbopack'
-            ].map((tech) => (
+              'Next.js 15',
+              'React 19',
+              'TypeScript',
+              'Material UI',
+              'MapLibre GL',
+              'Prisma',
+              'Zustand',
+              'i18next',
+              'Jest',
+              'Playwright',
+              'pnpm',
+              'Turbopack',
+            ].map(tech => (
               <Grid key={tech}>
                 <Chip
                   label={tech}
@@ -272,5 +282,5 @@ export default function Home() {
         </Container>
       </Box>
     </>
-  )
+  );
 }

@@ -17,7 +17,7 @@
     },
     "vrIntegration": {
       "title": "VR統合",
-      "description": "WebXR APIを使用した主要なVRヘッドセット対応の没入型VR体験。"  
+      "description": "WebXR APIを使用した主要なVRヘッドセット対応の没入型VR体験。"
     },
     "internationalization": {
       "title": "国際化",

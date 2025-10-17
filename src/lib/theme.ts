@@ -1,12 +1,12 @@
-import { createTheme, Theme } from '@mui/material/styles'
+import { createTheme, Theme } from '@mui/material/styles';
 
 declare module '@mui/material/styles' {
   interface Palette {
-    tertiary: Palette['primary']
+    tertiary: Palette['primary'];
   }
 
   interface PaletteOptions {
-    tertiary?: PaletteOptions['primary']
+    tertiary?: PaletteOptions['primary'];
   }
 }
 
@@ -91,7 +91,7 @@ export const lightTheme: Theme = createTheme({
       },
     },
   },
-})
+});
 
 export const darkTheme: Theme = createTheme({
   palette: {
@@ -134,7 +134,7 @@ export const darkTheme: Theme = createTheme({
       },
     },
   },
-})
+});
 
 export const cyberpunkTheme: Theme = createTheme({
   palette: {
@@ -204,26 +204,26 @@ export const cyberpunkTheme: Theme = createTheme({
       },
     },
   },
-})
+});
 
 export const themes = {
   light: lightTheme,
   dark: darkTheme,
   cyberpunk: cyberpunkTheme,
-} as const
+} as const;
 
-export type ThemeMode = keyof typeof themes
+export type ThemeMode = keyof typeof themes;
 
 // Function to create RTL version of a theme
 export const createRTLTheme = (theme: Theme): Theme => {
   return createTheme({
     ...theme,
     direction: 'rtl',
-  })
-}
+  });
+};
 
 // Function to get theme with optional RTL support
 export const getTheme = (mode: ThemeMode, isRTL = false): Theme => {
-  const baseTheme = themes[mode]
-  return isRTL ? createRTLTheme(baseTheme) : baseTheme
-}
+  const baseTheme = themes[mode];
+  return isRTL ? createRTLTheme(baseTheme) : baseTheme;
+};

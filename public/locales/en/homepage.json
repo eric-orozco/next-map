@@ -12,7 +12,7 @@
       "description": "Powered by MapLibre GL JS with custom vector tiles and real-time data visualization."
     },
     "3dVisualization": {
-      "title": "3D Visualization", 
+      "title": "3D Visualization",
       "description": "Interactive 3D terrain rendering with customizable elevation and lighting effects."
     },
     "vrIntegration": {
