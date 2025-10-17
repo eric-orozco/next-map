@@ -1,0 +1,35 @@
+{
+  "title": "Next Map",
+  "subtitle": "Mapeamento 3D Avançado com Suporte VR",
+  "heroDescription": "Vitrine de tecnologias web de ponta incluindo MapLibre GL JS, Material UI, Next.js 15, React 19, TypeScript, e integração WebXR. Construído para navegadores modernos com design responsivo mobile-first.",
+  "exploreMaps": "Explorar Mapas",
+  "viewSource": "Ver Código",
+  "technologyShowcase": "Vitrine de Tecnologia",
+  "builtWithModernStack": "Construído com Stack Moderno",
+  "features": {
+    "advancedMapping": {
+      "title": "Mapeamento Avançado",
+      "description": "Alimentado por MapLibre GL JS com tiles vetoriais personalizados e visualização de dados em tempo real."
+    },
+    "3dVisualization": {
+      "title": "Visualização 3D",
+      "description": "Renderização interativa de terreno 3D com elevação personalizável e efeitos de iluminação."
+    },
+    "vrIntegration": {
+      "title": "Integração VR",
+      "description": "Experiência VR imersiva compatível com principais headsets VR usando API WebXR."
+    },
+    "internationalization": {
+      "title": "Internacionalização",
+      "description": "Suporte multi-idioma com mudança dinâmica de localização e suporte a texto RTL."
+    },
+    "authentication": {
+      "title": "Autenticação",
+      "description": "Autenticação segura com provedores OAuth e gerenciamento de sessão baseado em JWT."
+    },
+    "performance": {
+      "title": "Performance",
+      "description": "Otimizado para velocidade com divisão de código, carregamento preguiçoso e service workers."
+    }
+  }
+}

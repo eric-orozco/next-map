@@ -1,0 +1,14 @@
+{
+  "home": "Accueil",
+  "maps": "Cartes",
+  "explore": "Explorer",
+  "create": "Créer une Carte",
+  "dashboard": "Tableau de Bord",
+  "library": "Ma Bibliothèque",
+  "favorites": "Favoris",
+  "trending": "Tendances",
+  "recent": "Récents",
+  "public": "Cartes Publiques",
+  "private": "Cartes Privées",
+  "shared": "Partagées avec Moi"
+}

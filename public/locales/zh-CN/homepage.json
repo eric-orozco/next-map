@@ -1,0 +1,35 @@
+{
+  "title": "Next Map",
+  "subtitle": "支持VR的高级3D地图",
+  "heroDescription": "展示尖端网络技术，包括MapLibre GL JS、Material UI、Next.js 15、React 19、TypeScript和WebXR集成。专为现代浏览器构建，采用移动优先的响应式设计。",
+  "exploreMaps": "探索地图",
+  "viewSource": "查看源码",
+  "technologyShowcase": "技术展示",
+  "builtWithModernStack": "使用现代技术栈构建",
+  "features": {
+    "advancedMapping": {
+      "title": "高级地图",
+      "description": "由MapLibre GL JS驱动，支持自定义矢量瓦片和实时数据可视化。"
+    },
+    "3dVisualization": {
+      "title": "3D可视化",
+      "description": "交互式3D地形渲染，支持可定制的高程和光照效果。"
+    },
+    "vrIntegration": {
+      "title": "VR集成",
+      "description": "使用WebXR API的沉浸式VR体验，兼容主要VR头显。"
+    },
+    "internationalization": {
+      "title": "国际化",
+      "description": "多语言支持，支持动态区域设置切换和RTL文本支持。"
+    },
+    "authentication": {
+      "title": "身份验证",
+      "description": "使用OAuth提供商和基于JWT的会话管理的安全身份验证。"
+    },
+    "performance": {
+      "title": "性能",
+      "description": "通过代码分割、懒加载和service worker优化速度。"
+    }
+  }
+}

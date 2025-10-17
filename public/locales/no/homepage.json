@@ -1,0 +1,35 @@
+{
+  "title": "Next Map",
+  "subtitle": "Avansert 3D-kartlegging med VR-støtte",
+  "heroDescription": "Utstilling av banebrytende webteknologier inkludert MapLibre GL JS, Material UI, Next.js 15, React 19, TypeScript, og WebXR-integrasjon. Bygget for moderne nettlesere med mobil-først responsivt design.",
+  "exploreMaps": "Utforsk Kart",
+  "viewSource": "Se Kildekode",
+  "technologyShowcase": "Teknologi-utstilling",
+  "builtWithModernStack": "Bygget med Moderne Stack",
+  "features": {
+    "advancedMapping": {
+      "title": "Avansert Kartlegging",
+      "description": "Drevet av MapLibre GL JS med tilpassede vektorfliser og sanntids datavisualisering."
+    },
+    "3dVisualization": {
+      "title": "3D-visualisering",
+      "description": "Interaktiv 3D-terrengrendering med tilpassbar høyde og lyseffekter."
+    },
+    "vrIntegration": {
+      "title": "VR-integrasjon",
+      "description": "Oppslukende VR-opplevelse kompatibel med store VR-hodetelefoner ved bruk av WebXR API."
+    },
+    "internationalization": {
+      "title": "Internasjonalisering",
+      "description": "Flerspråklig støtte med dynamisk lokalbytte og RTL-tekststøtte."
+    },
+    "authentication": {
+      "title": "Autentisering",
+      "description": "Sikker autentisering med OAuth-leverandører og JWT-basert øktbehandling."
+    },
+    "performance": {
+      "title": "Ytelse",
+      "description": "Optimalisert for hastighet med kodedeling, lat lasting og service workers."
+    }
+  }
+}

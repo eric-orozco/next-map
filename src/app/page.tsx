@@ -1,103 +1,276 @@
-import Image from "next/image";
+'use client'
+
+import React from 'react'
+import { 
+  Box, 
+  Container, 
+  Typography, 
+  Grid, 
+  Card, 
+  CardContent,
+  Button,
+  Chip,
+  Paper,
+  useTheme
+} from '@mui/material'
+import { 
+  Map as MapIcon, 
+  ThreeDRotation, 
+  ViewInAr, 
+  Language,
+  Security,
+  Speed
+} from '@mui/icons-material'
+import { useTranslation } from 'react-i18next'
+import Navigation from '@/components/Navigation'
+import MapComponent from '@/components/MapComponent'
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const theme = useTheme()
+  const { t } = useTranslation('homepage')
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+  const features = [
+    {
+      id: 'advanced-mapping',
+      icon: <MapIcon color="primary" />,
+      title: t('features.advancedMapping.title'),
+      description: t('features.advancedMapping.description'),
+      technologies: ['MapLibre', 'Vector Tiles', 'WebGL']
+    },
+    {
+      id: '3d-visualization',
+      icon: <ThreeDRotation color="primary" />,
+      title: t('features.3dVisualization.title'),
+      description: t('features.3dVisualization.description'),
+      technologies: ['MapLibre 3D', 'WebGL', 'Terrain']
+    },
+    {
+      id: 'vr-integration',
+      icon: <ViewInAr color="primary" />,
+      title: t('features.vrIntegration.title'),
+      description: t('features.vrIntegration.description'),
+      technologies: ['WebXR', 'VR', 'Immersive Web']
+    },
+    {
+      id: 'internationalization',
+      icon: <Language color="primary" />,
+      title: t('features.internationalization.title'),
+      description: t('features.internationalization.description'),
+      technologies: ['i18next', 'RTL', 'Localization']
+    },
+    {
+      id: 'authentication',
+      icon: <Security color="primary" />,
+      title: t('features.authentication.title'),
+      description: t('features.authentication.description'),
+      technologies: ['NextAuth', 'OAuth', 'JWT']
+    },
+    {
+      id: 'performance',
+      icon: <Speed color="primary" />,
+      title: t('features.performance.title'),
+      description: t('features.performance.description'),
+      technologies: ['Next.js', 'Turbopack', 'PWA']
+    }
+  ]
+
+  return (
+    <>
+      <Navigation />
+      
+      {/* Hero Section */}
+      <Box
+        sx={{
+          pt: 10, // Account for fixed AppBar
+          pb: 4,
+          background: theme.palette.mode === 'dark' 
+            ? 'linear-gradient(135deg, #1a1a1a 0%, #2d1b69 100%)'
+            : 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+          color: 'white',
+          minHeight: '60vh',
+          display: 'flex',
+          alignItems: 'center',
+        }}
+      >
+        <Container maxWidth="lg">
+          <Grid container spacing={4} alignItems="center">
+            <Grid size={{ xs: 12, md: 6 }}>
+              <Typography
+                variant="h1"
+                component="h1"
+                gutterBottom
+                sx={{
+                  fontSize: { xs: '2.5rem', md: '3.5rem' },
+                  fontWeight: 700,
+                  mb: 3,
+                }}
+              >
+                {t('title')}
+              </Typography>
+              <Typography
+                variant="h5"
+                component="h2"
+                gutterBottom
+                sx={{
+                  mb: 4,
+                  opacity: 0.9,
+                  fontWeight: 300,
+                }}
+              >
+                {t('subtitle')}
+              </Typography>
+              <Typography
+                variant="body1"
+                sx={{
+                  mb: 4,
+                  fontSize: '1.1rem',
+                  opacity: 0.8,
+                  lineHeight: 1.7,
+                }}
+              >
+                {t('heroDescription')}
+              </Typography>
+              <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
+                <Button
+                  variant="contained"
+                  size="large"
+                  sx={{
+                    backgroundColor: 'white',
+                    color: theme.palette.primary.main,
+                    '&:hover': {
+                      backgroundColor: '#f5f5f5',
+                    },
+                  }}
+                >
+                  {t('exploreMaps')}
+                </Button>
+                <Button
+                  variant="outlined"
+                  size="large"
+                  sx={{
+                    borderColor: 'white',
+                    color: 'white',
+                    '&:hover': {
+                      borderColor: 'white',
+                      backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                    },
+                  }}
+                >
+                  {t('viewSource')}
+                </Button>
+              </Box>
+            </Grid>
+            <Grid size={{ xs: 12, md: 6 }}>
+              <Paper
+                elevation={8}
+                sx={{
+                  borderRadius: 4,
+                  overflow: 'hidden',
+                  height: 400,
+                }}
+              >
+                <MapComponent height={400} />
+              </Paper>
+            </Grid>
+          </Grid>
+        </Container>
+      </Box>
+
+      {/* Features Section */}
+      <Container maxWidth="lg" sx={{ py: 8 }}>
+        <Typography
+          variant="h2"
+          component="h2"
+          align="center"
+          gutterBottom
+          sx={{ mb: 6 }}
+        >
+          {t('technologyShowcase')}
+        </Typography>
+        
+        <Grid container spacing={4}>
+          {features.map((feature) => (
+            <Grid size={{ xs: 12, md: 6, lg: 4 }} key={feature.id}>
+              <Card
+                elevation={2}
+                sx={{
+                  height: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  transition: 'transform 0.2s, box-shadow 0.2s',
+                  '&:hover': {
+                    transform: 'translateY(-4px)',
+                    boxShadow: theme.shadows[8],
+                  },
+                }}
+              >
+                <CardContent sx={{ flexGrow: 1 }}>
+                  <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+                    {feature.icon}
+                    <Typography
+                      variant="h6"
+                      component="h3"
+                      sx={{ ml: 1, fontWeight: 600 }}
+                    >
+                      {feature.title}
+                    </Typography>
+                  </Box>
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{ mb: 3, lineHeight: 1.6 }}
+                  >
+                    {feature.description}
+                  </Typography>
+                  <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
+                    {feature.technologies.map((tech) => (
+                      <Chip
+                        key={tech}
+                        label={tech}
+                        size="small"
+                        variant="outlined"
+                        color="primary"
+                      />
+                    ))}
+                  </Box>
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
+
+      {/* Tech Stack Section */}
+      <Box sx={{ bgcolor: 'background.paper', py: 8 }}>
+        <Container maxWidth="lg">
+          <Typography
+            variant="h3"
+            component="h2"
+            align="center"
+            gutterBottom
+            sx={{ mb: 6 }}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+            {t('builtWithModernStack')}
+          </Typography>
+          
+          <Grid container spacing={3} justifyContent="center">
+            {[
+              'Next.js 15', 'React 19', 'TypeScript', 'Material UI', 
+              'MapLibre GL', 'Prisma', 'Zustand', 'i18next',
+              'Jest', 'Playwright', 'pnpm', 'Turbopack'
+            ].map((tech) => (
+              <Grid key={tech}>
+                <Chip
+                  label={tech}
+                  variant="filled"
+                  color="primary"
+                  sx={{ fontSize: '1rem', py: 2, px: 1 }}
+                />
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+      </Box>
+    </>
+  )
 }
