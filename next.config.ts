@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
       mocha: { browser: 'mocha/browser-entry.js' },
     },
   },
-  
+
   // Security headers
   async headers() {
     return [

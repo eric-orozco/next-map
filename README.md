@@ -6,21 +6,22 @@
 
 ### Language Support (9 Languages)
 
-| Language | Code | Status | RTL | Coverage |
-|----------|------|--------|-----|----------|
-| 🇺🇸 English | `en` | ✅ Primary | No | 100% |
-| 🇪🇸 Spanish | `es` | ✅ Complete | No | 100% |
-| 🇫🇷 French | `fr` | ✅ Complete | No | 100% |
-| 🇨🇳 Chinese (Simplified) | `zh-CN` | ✅ Complete | No | 100% |
-| 🇯🇵 Japanese | `ja` | ✅ Complete | No | 100% |
-| 🇰🇷 Korean | `ko` | ✅ Complete | No | 100% |
-| 🇳🇴 Norwegian | `no` | ✅ Complete | No | 100% |
-| 🇧🇷 Portuguese (Brazilian) | `pt-BR` | ✅ Complete | No | 100% |
-| 🇸🇦 Arabic (Saudi Arabia) | `ar-SA` | ✅ Complete | Yes | 100% |
+| Language                  | Code    | Status      | RTL | Coverage |
+| ------------------------- | ------- | ----------- | --- | -------- |
+| 🇺🇸 English                | `en`    | ✅ Primary  | No  | 100%     |
+| 🇪🇸 Spanish                | `es`    | ✅ Complete | No  | 100%     |
+| 🇫🇷 French                 | `fr`    | ✅ Complete | No  | 100%     |
+| 🇨🇳 Chinese (Simplified)   | `zh-CN` | ✅ Complete | No  | 100%     |
+| 🇯🇵 Japanese               | `ja`    | ✅ Complete | No  | 100%     |
+| 🇰🇷 Korean                 | `ko`    | ✅ Complete | No  | 100%     |
+| 🇳🇴 Norwegian              | `no`    | ✅ Complete | No  | 100%     |
+| 🇧🇷 Portuguese (Brazilian) | `pt-BR` | ✅ Complete | No  | 100%     |
+| 🇸🇦 Arabic (Saudi Arabia)  | `ar-SA` | ✅ Complete | Yes | 100%     |
 
 ### i18n Architecture
 
 #### Translation Structure
+
 ```
 public/locales/
 ├── en/
@@ -34,14 +35,21 @@ public/locales/
 ```
 
 #### SSR-Optimized Loading
+
 ```typescript
 // Critical translations embedded for SSR
 export const criticalTranslations = {
   en: {
-    common: { /* essential UI text */ },
-    navigation: { /* menu items */ },
-    homepage: { /* homepage content */ },
-  }
+    common: {
+      /* essential UI text */
+    },
+    navigation: {
+      /* menu items */
+    },
+    homepage: {
+      /* homepage content */
+    },
+  },
 };
 
 // Lazy loading for additional content
@@ -49,13 +57,15 @@ const { t } = useTranslation('map'); // Loads map.json on demand
 ```
 
 #### RTL Support (Arabic)
+
 - Automatic layout direction switching
 - RTL-optimized Material UI components
 - Mirrored navigation and content flow
 - Cultural date/number formatting
 
 #### Usage Examples
-```typescript
+
+````typescript
 // In components
 const { t } = useTranslation('common');
 return <Button>{t('save')}</Button>;
@@ -202,14 +212,16 @@ The application now supports **9 languages** with complete translations:
    git clone https://github.com/eric-orozco/next-map.git
    cd next-map
    pnpm install
-   ```
+````
 
 2. **Environment Variables**
+
    ```bash
    cp .env.local.example .env.local
    ```
-   
+
    Required variables:
+
    ```env
    DATABASE_URL="postgresql://username:password@localhost:5432/nextmap"
    NEXTAUTH_SECRET="your-secret-key"
@@ -217,6 +229,7 @@ The application now supports **9 languages** with complete translations:
    ```
 
 3. **Database Setup**
+
    ```bash
    pnpm db:generate    # Generate Prisma client
    pnpm db:push        # Create database schema
@@ -231,6 +244,7 @@ The application now supports **9 languages** with complete translations:
 ### Available Scripts
 
 #### Core Development
+
 - `pnpm dev` - Development server with Turbopack hot reload
 - `pnpm build` - Production build with optimization
 - `pnpm start` - Production server
@@ -239,6 +253,7 @@ The application now supports **9 languages** with complete translations:
 - `pnpm type-check` - TypeScript type validation
 
 #### Testing Suite
+
 - `pnpm test` - Jest unit tests (watch mode)
 - `pnpm test:ci` - Jest tests (single run)
 - `pnpm test:coverage` - Jest with coverage report
@@ -246,17 +261,20 @@ The application now supports **9 languages** with complete translations:
 - `pnpm test:e2e:ui` - Playwright with interactive UI
 
 #### Database Management
+
 - `pnpm db:generate` - Regenerate Prisma client
 - `pnpm db:push` - Push schema changes to database
 - `pnpm db:migrate` - Create and run migrations
 - `pnpm db:studio` - Open Prisma Studio (database GUI)
 
 #### Deployment
+
 - `pnpm deploy:vercel` - Deploy to Vercel production
 
 ### Development Workflow
 
 1. **Feature Development**
+
    ```bash
    git checkout -b feature/your-feature
    pnpm dev                    # Start development server
@@ -267,6 +285,7 @@ The application now supports **9 languages** with complete translations:
    ```
 
 2. **Pre-commit Checks**
+
    ```bash
    pnpm type-check            # TypeScript validation
    pnpm format:check          # Code formatting
@@ -295,6 +314,7 @@ The application now supports **9 languages** with complete translations:
 ## 📜 Available Scripts
 
 ### Development Commands
+
 - `pnpm dev` - Start development server with Turbopack hot reload
 - `pnpm build` - Create optimized production build
 - `pnpm start` - Start production server
@@ -304,6 +324,7 @@ The application now supports **9 languages** with complete translations:
 - `pnpm type-check` - Run TypeScript type validation
 
 ### Testing Commands
+
 - `pnpm test` - Run Jest unit tests in watch mode
 - `pnpm test:ci` - Run Jest tests once (CI mode)
 - `pnpm test:coverage` - Generate test coverage report
@@ -311,17 +332,20 @@ The application now supports **9 languages** with complete translations:
 - `pnpm test:e2e:ui` - Run Playwright tests with interactive UI
 
 ### Database Commands
+
 - `pnpm db:generate` - Regenerate Prisma client after schema changes
 - `pnpm db:push` - Push schema changes to database (development)
 - `pnpm db:migrate` - Create and run database migrations (production)
 - `pnpm db:studio` - Open Prisma Studio visual database editor
 
 ### Deployment Commands
+
 - `pnpm deploy:vercel` - Deploy to Vercel production environment
 
 ## 🏗 Codebase Architecture
 
 ### Project Structure
+
 ```
 next-map/
 ├── .github/                # GitHub Actions workflows and templates
@@ -368,23 +392,26 @@ next-map/
 ### Key Architecture Patterns
 
 #### 1. **Server-Side Rendering (SSR)**
+
 - Next.js App Router with full SSR support
 - Critical translations embedded for fast first paint
 - SEO-optimized meta tags and structured data
 - Material UI server-side styling
 
 #### 2. **State Management**
+
 ```typescript
 // Zustand stores for client-side state
-const useAppStore = create((set) => ({
+const useAppStore = create(set => ({
   theme: 'light',
   language: 'en',
-  setTheme: (theme) => set({ theme }),
-  setLanguage: (language) => set({ language }),
+  setTheme: theme => set({ theme }),
+  setLanguage: language => set({ language }),
 }));
 ```
 
 #### 3. **Internationalization Architecture**
+
 ```typescript
 // Multi-layer i18n system
 - Critical translations (SSR-embedded)
@@ -394,6 +421,7 @@ const useAppStore = create((set) => ({
 ```
 
 #### 4. **Component Architecture**
+
 ```typescript
 // TypeScript-first component design
 interface NavigationProps {
@@ -401,15 +429,13 @@ interface NavigationProps {
   showLanguageSelector?: boolean;
 }
 
-export const Navigation: React.FC<NavigationProps> = ({
-  variant = 'default',
-  showLanguageSelector = true,
-}) => {
+export const Navigation: React.FC<NavigationProps> = ({ variant = 'default', showLanguageSelector = true }) => {
   // Component implementation
 };
 ```
 
 #### 5. **Testing Strategy**
+
 ```typescript
 // Comprehensive testing approach
 - Unit tests: Jest + Testing Library
@@ -462,12 +488,14 @@ The application supports multiple themes to showcase design flexibility:
 ### Comprehensive Testing Approach
 
 #### Unit Testing (Jest + Testing Library)
+
 ```bash
 pnpm test              # Watch mode
 pnpm test:coverage     # Coverage report
 ```
 
 **Coverage Areas:**
+
 - ✅ React component rendering and behavior
 - ✅ Custom hooks functionality
 - ✅ Utility functions and helpers
@@ -475,11 +503,12 @@ pnpm test:coverage     # Coverage report
 - ✅ i18n integration and translation loading
 
 **Example Test:**
+
 ```typescript
 describe('Navigation Component', () => {
   it('renders navigation items correctly', async () => {
     render(<Navigation />);
-    
+
     expect(screen.getByText('Home')).toBeInTheDocument();
     expect(screen.getByText('Explore')).toBeInTheDocument();
     expect(screen.getByText('Dashboard')).toBeInTheDocument();
@@ -488,12 +517,14 @@ describe('Navigation Component', () => {
 ```
 
 #### End-to-End Testing (Playwright)
+
 ```bash
 pnpm test:e2e          # Run E2E tests
 pnpm test:e2e:ui       # Interactive mode
 ```
 
 **Test Coverage:**
+
 - ✅ Homepage functionality and content loading
 - ✅ Navigation and routing behavior
 - ✅ Language switching and i18n
@@ -502,14 +533,16 @@ pnpm test:e2e:ui       # Interactive mode
 - ✅ Theme switching functionality
 
 **Browser Support:**
+
 - **Local Development**: Chrome, Firefox, Safari, Mobile Chrome
 - **CI Pipeline**: Chromium (optimized for speed)
 
 **Example E2E Test:**
+
 ```typescript
 test('should display homepage content', async ({ page }) => {
   await page.goto('/');
-  
+
   await expect(page.getByRole('heading', { name: 'Next Map' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Advanced 3D Mapping with VR Support' })).toBeVisible();
   await expect(page.locator('header')).toBeVisible();
@@ -517,12 +550,14 @@ test('should display homepage content', async ({ page }) => {
 ```
 
 #### Performance Testing
+
 - Bundle size analysis
 - Core Web Vitals monitoring
 - Lighthouse CI integration
 - Loading performance validation
 
 #### Quality Gates
+
 - **Unit Tests**: 80%+ coverage target
 - **E2E Tests**: Critical user journeys validated
 - **Type Safety**: Zero TypeScript errors
@@ -536,14 +571,16 @@ test('should display homepage content', async ({ page }) => {
 Next Map is optimized for **Vercel deployment** with full **Server-Side Rendering (SSR)** support:
 
 #### Quick Deploy (2 minutes)
+
 ```bash
 # Install Vercel CLI and deploy
 npx vercel --prod
 ```
 
 #### What You Get on Vercel:
+
 - ✅ **Full SSR Support** - Dynamic server-side rendering
-- ✅ **API Routes** - Serverless backend functionality  
+- ✅ **API Routes** - Serverless backend functionality
 - ✅ **Edge Functions** - Ultra-fast global distribution
 - ✅ **Image Optimization** - Automatic WebP conversion
 - ✅ **Global CDN** - Worldwide performance optimization
@@ -552,12 +589,14 @@ npx vercel --prod
 - ✅ **Analytics** - Performance monitoring (free tier)
 
 #### Production Features:
+
 - **Multi-language SSR** - All 9 languages server-rendered
 - **3D Map Rendering** - MapLibre GL JS with terrain
 - **Material UI SSR** - Styled components server-rendered
 - **Real-time i18n** - Language switching without reload
 
 #### Manual Setup (Optional):
+
 ```bash
 # Install Vercel CLI globally
 npm i -g vercel
@@ -568,6 +607,7 @@ vercel --prod
 ```
 
 #### GitHub Actions Integration:
+
 - Add `VERCEL_TOKEN` to GitHub secrets (simplified setup)
 - Automatic deployments on every push to main
 - Preview deployments for pull requests with rich PR comments
@@ -578,12 +618,14 @@ vercel --prod
 ### Alternative Deployment Options
 
 #### Docker (Self-hosted)
+
 ```bash
 docker build -t next-map .
 docker run -p 3000:3000 next-map
 ```
 
 #### Static Export (Limited functionality)
+
 ```bash
 pnpm build
 pnpm start
@@ -601,7 +643,7 @@ The project includes a comprehensive CI/CD pipeline that runs on every push and 
 
 1. **Code Quality & Security** (5-8 minutes)
    - ESLint code linting
-   - TypeScript type checking  
+   - TypeScript type checking
    - Prettier format checking
    - Security vulnerability scanning
 
@@ -623,24 +665,27 @@ The project includes a comprehensive CI/CD pipeline that runs on every push and 
    - Build artifact caching
    - Asset optimization validation
 
-5. **Deployment** (1-2 minutes) *[If Vercel secrets configured]*
+5. **Deployment** (1-2 minutes) _[If Vercel secrets configured]_
    - Preview deployment (PRs)
    - Production deployment (main branch)
    - Deployment status reporting
 
 #### Quality Gates:
+
 - ✅ All tests must pass
-- ✅ Code coverage > 80% *(currently disabled for development)*
+- ✅ Code coverage > 80% _(currently disabled for development)_
 - ✅ No TypeScript errors
 - ✅ No ESLint errors
 - ✅ Successful production build
 
 #### Branch Protection:
+
 - Requires PR reviews
 - Requires status checks to pass
 - No direct pushes to main branch
 
 #### Performance Optimizations:
+
 - **Parallel job execution** - Multiple stages run simultaneously
 - **Dependency caching** - pnpm cache across workflows
 - **Build artifact caching** - Next.js build optimization
@@ -672,6 +717,7 @@ pnpm build          # Production build
 ### Development Process
 
 1. **Fork & Clone**
+
    ```bash
    git clone https://github.com/your-username/next-map.git
    cd next-map
@@ -679,11 +725,13 @@ pnpm build          # Production build
    ```
 
 2. **Create Feature Branch**
+
    ```bash
    git checkout -b feature/amazing-feature
    ```
 
 3. **Development & Testing**
+
    ```bash
    pnpm dev                    # Start development server
    pnpm test:coverage          # Run unit tests
@@ -693,6 +741,7 @@ pnpm build          # Production build
    ```
 
 4. **Commit & Push**
+
    ```bash
    git add .
    git commit -m "feat: add amazing feature"
@@ -724,8 +773,8 @@ pnpm build          # Production build
 ## 📄 Documentation
 
 - **[DEPLOYMENT.md](./DEPLOYMENT.md)** - Comprehensive deployment guide
-- **[API Documentation](./docs/api.md)** - API endpoints and usage *(coming soon)*
-- **[Component Library](./docs/components.md)** - Component documentation *(coming soon)*
+- **[API Documentation](./docs/api.md)** - API endpoints and usage _(coming soon)_
+- **[Component Library](./docs/components.md)** - Component documentation _(coming soon)_
 
 ## 📝 License
 
@@ -750,4 +799,4 @@ This project demonstrates:
 
 ---
 
-*Ready to explore the future of web mapping? Deploy now with `vercel --prod`* 🚀
+_Ready to explore the future of web mapping? Deploy now with `vercel --prod`_ 🚀
