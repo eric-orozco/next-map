@@ -22,15 +22,19 @@ import {
   Speed,
 } from '@mui/icons-material';
 import { useTranslation } from 'react-i18next';
+import { useAppStore } from '@/stores/appStore';
 import Navigation from '@/components/Navigation';
 import MapComponent from '@/components/MapComponent';
 
 export default function Home() {
   const theme = useTheme();
-  const { t, i18n } = useTranslation('homepage');
+  const { t, i18n, ready } = useTranslation('homepage');
+  const { language } = useAppStore();
   
   // Debug current language
-  console.log('Homepage: Current language:', i18n.language);
+  console.log('Homepage: Current language from store:', language);
+  console.log('Homepage: Current language from i18n:', i18n.language);
+  console.log('Homepage: Translation ready:', ready);
   console.log('Homepage: Translation example:', t('title'));
 
   const features = [
