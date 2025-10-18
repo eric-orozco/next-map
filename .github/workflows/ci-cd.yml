@@ -107,7 +107,7 @@ jobs:
           NODE_ENV: test
 
       - name: Upload test coverage to Codecov
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@v5
         with:
           file: ./coverage/lcov.info
           flags: unittests
