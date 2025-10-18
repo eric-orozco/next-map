@@ -360,7 +360,8 @@ jobs:
         if: steps.deploy.outputs.url
         with:
           script: |
-            await github.rest.repos.createDeployment({
+            // Create deployment
+            const { data: deployment } = await github.rest.repos.createDeployment({
               owner: context.repo.owner,
               repo: context.repo.repo,
               ref: context.sha,
@@ -370,10 +371,11 @@ jobs:
               required_contexts: []
             });
 
+            // Create deployment status with the actual deployment ID
             await github.rest.repos.createDeploymentStatus({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              deployment_id: context.payload.deployment?.id || 'latest',
+              deployment_id: deployment.id,
               state: 'success',
               environment_url: '${{ steps.deploy.outputs.url }}',
               description: 'Production deployment successful'
