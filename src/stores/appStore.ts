@@ -1,17 +1,17 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { ThemeMode } from '@/lib/theme';
-import { 
-  changeLanguage, 
-  getCurrentLanguage, 
-  type SupportedLanguage 
+import {
+  changeLanguage,
+  getCurrentLanguage,
+  type SupportedLanguage,
 } from '@/lib/i18n';
 
 // RTL languages
 const RTL_LANGUAGES = new Set<SupportedLanguage>(['ar-SA']);
 
 // Helper function to check if a language is RTL
-const isRTLLanguage = (lang: SupportedLanguage): boolean => 
+const isRTLLanguage = (lang: SupportedLanguage): boolean =>
   RTL_LANGUAGES.has(lang);
 
 interface AppState {
@@ -56,11 +56,9 @@ interface AppState {
   clearError: () => void;
 }
 
-
-
 export const useAppStore = create(
   persist<AppState>(
-    (set) => ({
+    set => ({
       // Theme
       themeMode: 'light' as const,
       setThemeMode: (mode: ThemeMode) => set({ themeMode: mode }),
@@ -69,17 +67,17 @@ export const useAppStore = create(
       language: 'en' as SupportedLanguage,
       setLanguage: async (lang: SupportedLanguage) => {
         const isRTL = isRTLLanguage(lang);
-        
+
         // Sync with i18next first
         try {
           await changeLanguage(lang);
-          
+
           // Update HTML document attributes
           if (typeof document !== 'undefined') {
             document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
             document.documentElement.lang = lang;
           }
-          
+
           // Only update store if i18next change was successful
           set({ language: lang, isRTL });
         } catch (error) {
@@ -95,13 +93,13 @@ export const useAppStore = create(
       initializeLanguage: async () => {
         const currentLang = getCurrentLanguage();
         const isRTL = isRTLLanguage(currentLang);
-        
+
         // Update HTML document attributes
         if (typeof document !== 'undefined') {
           document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
           document.documentElement.lang = currentLang;
         }
-        
+
         set({ language: currentLang, isRTL });
       },
       isRTL: false,
@@ -110,7 +108,7 @@ export const useAppStore = create(
       // UI State
       sidebarOpen: false,
       setSidebarOpen: (open: boolean) => set({ sidebarOpen: open }),
-      toggleSidebar: () => set((state) => ({ sidebarOpen: !state.sidebarOpen })),
+      toggleSidebar: () => set(state => ({ sidebarOpen: !state.sidebarOpen })),
 
       // Map State
       currentMapId: null as string | null,
@@ -125,7 +123,7 @@ export const useAppStore = create(
         enableGeolocation: true,
       },
       updatePreferences: (prefs: Partial<AppState['preferences']>) =>
-        set((state) => ({
+        set(state => ({
           preferences: { ...state.preferences, ...prefs },
         })),
 
@@ -140,7 +138,7 @@ export const useAppStore = create(
     }),
     {
       name: 'nextmap-storage',
-      partialize: (state) => {
+      partialize: state => {
         const { themeMode, language, preferences } = state;
         return { themeMode, language, preferences } as AppState;
       },
