@@ -56,18 +56,18 @@ interface AppState {
   clearError: () => void;
 }
 
-type PersistedState = Pick<AppState, 'themeMode' | 'language' | 'preferences'>;
 
-export const useAppStore = create<AppState>()(
-  persist(
+
+export const useAppStore = create(
+  persist<AppState>(
     (set) => ({
       // Theme
-      themeMode: 'light',
-      setThemeMode: mode => set({ themeMode: mode }),
+      themeMode: 'light' as const,
+      setThemeMode: (mode: ThemeMode) => set({ themeMode: mode }),
 
       // Language
-      language: 'en',
-      setLanguage: async lang => {
+      language: 'en' as SupportedLanguage,
+      setLanguage: async (lang: SupportedLanguage) => {
         const isRTL = isRTLLanguage(lang);
         
         // Sync with i18next first
@@ -105,16 +105,16 @@ export const useAppStore = create<AppState>()(
         set({ language: currentLang, isRTL });
       },
       isRTL: false,
-      setIsRTL: isRTL => set({ isRTL }),
+      setIsRTL: (isRTL: boolean) => set({ isRTL }),
 
       // UI State
       sidebarOpen: false,
-      setSidebarOpen: open => set({ sidebarOpen: open }),
-      toggleSidebar: () => set(state => ({ sidebarOpen: !state.sidebarOpen })),
+      setSidebarOpen: (open: boolean) => set({ sidebarOpen: open }),
+      toggleSidebar: () => set((state) => ({ sidebarOpen: !state.sidebarOpen })),
 
       // Map State
-      currentMapId: null,
-      setCurrentMapId: mapId => set({ currentMapId: mapId }),
+      currentMapId: null as string | null,
+      setCurrentMapId: (mapId: string | null) => set({ currentMapId: mapId }),
 
       // User Preferences
       preferences: {
@@ -124,27 +124,26 @@ export const useAppStore = create<AppState>()(
         defaultMapStyle: 'streets',
         enableGeolocation: true,
       },
-      updatePreferences: prefs =>
-        set(state => ({
+      updatePreferences: (prefs: Partial<AppState['preferences']>) =>
+        set((state) => ({
           preferences: { ...state.preferences, ...prefs },
         })),
 
       // Loading States
       isLoading: false,
-      setIsLoading: loading => set({ isLoading: loading }),
+      setIsLoading: (loading: boolean) => set({ isLoading: loading }),
 
       // Error State
-      error: null,
-      setError: error => set({ error }),
+      error: null as string | null,
+      setError: (error: string | null) => set({ error }),
       clearError: () => set({ error: null }),
     }),
     {
       name: 'nextmap-storage',
-      partialize: (state): PersistedState => ({
-        themeMode: state.themeMode,
-        language: state.language,
-        preferences: state.preferences,
-      }),
+      partialize: (state) => {
+        const { themeMode, language, preferences } = state;
+        return { themeMode, language, preferences } as AppState;
+      },
     }
   )
 );
