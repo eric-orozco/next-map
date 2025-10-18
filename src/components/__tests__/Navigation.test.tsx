@@ -3,11 +3,10 @@ import { ThemeProvider, createTheme } from '@mui/material';
 import '@testing-library/jest-dom';
 import Navigation from '@/components/Navigation';
 
-// Mock i18next
-jest.mock('react-i18next', () => ({
-  useTranslation: () => ({
-    t: (key: string) => key,
-  }),
+// Mock next-intl
+jest.mock('next-intl', () => ({
+  useTranslations: () => (key: string) => key,
+  useLocale: () => 'en',
 }));
 
 // Mock the stores

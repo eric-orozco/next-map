@@ -8,74 +8,78 @@
 // Import Jest DOM matchers
 import '@testing-library/jest-dom';
 
-// Mock i18next modules for testing
-jest.mock('i18next-http-backend', () => ({}));
-jest.mock('i18next-browser-languagedetector', () => ({}));
-
-// Mock react-i18next with improved translation handling
-jest.mock('react-i18next', () => ({
-  useTranslation: (namespace = 'common') => ({
-    t: key => {
-      // Handle namespace:key format
-      const translations = {
-        'common:welcome': 'Welcome to Next Map',
-        'navigation:home': 'Home',
-        'navigation:explore': 'Explore',
-        'navigation:about': 'About',
-        'auth:signIn': 'Sign In',
-        'auth:signOut': 'Sign Out',
-        'map:title': 'Map Title',
-        'errors:generic': 'An unexpected error occurred',
-        'homepage:hero.title': 'Welcome to Next Map',
-        'homepage:hero.subtitle': 'Explore the world in 3D',
-      };
-
-      // If key doesn't contain namespace, prepend the current namespace
-      const fullKey = key.includes(':') ? key : `${namespace}:${key}`;
+// Mock next-intl for testing
+jest.mock('next-intl', () => ({
+  useTranslations: (namespace = 'Common') => {
+    const translations = {
+      // HomePage namespace
+      'HomePage.title': 'Next Map',
+      'HomePage.subtitle': 'Advanced 3D mapping with VR support',
+      'HomePage.exploreMaps': 'Explore Maps',
+      'HomePage.features.advancedMapping.title': 'Advanced Mapping',
+      'HomePage.features.3dVisualization.title': '3D Visualization',
+      // Navigation namespace
+      'Navigation.home': 'Home',
+      'Navigation.explore': 'Explore',
+      'Navigation.create': 'Create Map',
+      'Navigation.dashboard': 'Dashboard',
+      // Common namespace
+      'Common.welcome': 'Welcome to Next Map',
+      'Common.loading': 'Loading...',
+      'Common.error': 'An error occurred',
+      'Common.save': 'Save',
+    };
+    
+    return (key) => {
+      const fullKey = `${namespace}.${key}`;
       return translations[fullKey] || key;
-    },
-    i18n: {
-      language: 'en',
-      changeLanguage: jest.fn().mockResolvedValue(undefined),
-      exists: jest.fn().mockReturnValue(true),
-      dir: jest.fn().mockReturnValue('ltr'),
-    },
-    ready: true,
-  }),
-  initReactI18next: {
-    type: '3rdParty',
-    init: jest.fn(),
+    };
   },
+  useLocale: () => 'en',
+  useMessages: () => ({}),
 }));
 
-// Mock our consolidated i18n utilities
-jest.mock('@/lib/i18n', () => ({
-  __esModule: true,
-  default: {
-    language: 'en',
-    changeLanguage: jest.fn().mockResolvedValue(undefined),
-    t: jest.fn(key => key),
-  },
+// Mock next-intl/server
+jest.mock('next-intl/server', () => ({
+  getMessages: jest.fn().mockResolvedValue({}),
+  getTranslations: jest.fn(() => (key) => key),
+  setRequestLocale: jest.fn(),
+}));
+
+// Mock our i18n configuration
+jest.mock('@/i18n', () => ({
+  locales: ['en', 'es', 'fr', 'zh-CN', 'ja', 'ko', 'no', 'pt-BR', 'ar-SA'],
   supportedLanguages: [
     { code: 'en', name: 'English', flag: '🇺🇸' },
     { code: 'es', name: 'Español', flag: '🇪🇸' },
     { code: 'fr', name: 'Français', flag: '🇫🇷' },
+    { code: 'zh-CN', name: '中文', flag: '🇨🇳' },
+    { code: 'ja', name: '日本語', flag: '🇯🇵' },
+    { code: 'ko', name: '한국어', flag: '��' },
+    { code: 'no', name: 'Norsk', flag: '🇳🇴' },
+    { code: 'pt-BR', name: 'Português', flag: '🇧🇷' },
+    { code: 'ar-SA', name: 'العربية', flag: '🇸🇦' },
   ],
-  changeLanguage: jest.fn().mockResolvedValue(true),
-  getCurrentLanguage: jest.fn().mockReturnValue('en'),
-  getLanguageInfo: jest
-    .fn()
-    .mockReturnValue({ code: 'en', name: 'English', flag: '🇺🇸' }),
-  isLanguageSupported: jest.fn().mockReturnValue(true),
-  getBrowserLanguage: jest.fn().mockReturnValue('en'),
-  formatDate: jest.fn().mockReturnValue('January 1, 2024'),
-  formatNumber: jest.fn().mockReturnValue('1,000'),
-  formatCurrency: jest.fn().mockReturnValue('$1,000.00'),
-  getTextDirection: jest.fn().mockReturnValue('ltr'),
-  translateWithFallback: jest.fn((key, fallback) => fallback),
 }));
 
-// Mock next/router
+// Mock next/navigation (App Router)
+jest.mock('next/navigation', () => ({
+  useRouter() {
+    return {
+      push: jest.fn(),
+      replace: jest.fn(),
+      prefetch: jest.fn(),
+      back: jest.fn(),
+      forward: jest.fn(),
+      refresh: jest.fn(),
+    };
+  },
+  usePathname: jest.fn(() => '/en'),
+  useSearchParams: jest.fn(() => new URLSearchParams()),
+  useParams: jest.fn(() => ({ locale: 'en' })),
+}));
+
+// Mock next/router for legacy support
 jest.mock('next/router', () => ({
   useRouter() {
     return {
