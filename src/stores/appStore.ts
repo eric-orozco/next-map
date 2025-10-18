@@ -56,9 +56,11 @@ interface AppState {
   clearError: () => void;
 }
 
+type PersistedState = Pick<AppState, 'themeMode' | 'language' | 'preferences'>;
+
 export const useAppStore = create<AppState>()(
   persist(
-    set => ({
+    (set) => ({
       // Theme
       themeMode: 'light',
       setThemeMode: mode => set({ themeMode: mode }),
@@ -138,7 +140,7 @@ export const useAppStore = create<AppState>()(
     }),
     {
       name: 'nextmap-storage',
-      partialize: state => ({
+      partialize: (state): PersistedState => ({
         themeMode: state.themeMode,
         language: state.language,
         preferences: state.preferences,
