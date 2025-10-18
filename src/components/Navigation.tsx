@@ -24,17 +24,20 @@ import {
   Notifications,
   Search,
 } from '@mui/icons-material';
-import { useTranslation } from 'react-i18next';
+import { useTranslations, useLocale } from 'next-intl';
+import { useRouter } from 'next/navigation';
 import { useAppStore } from '@/stores/appStore';
 import { ThemeMode } from '@/lib/theme';
-import { type SupportedLanguage } from '@/lib/i18n';
+import { supportedLanguages } from '@/i18n';
 
 export default function Navigation() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-  const { t } = useTranslation('navigation');
+  const t = useTranslations('Navigation');
+  const locale = useLocale();
+  const router = useRouter();
 
-  const { themeMode, setThemeMode, toggleSidebar, setLanguage } = useAppStore();
+  const { themeMode, setThemeMode, toggleSidebar } = useAppStore();
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [themeMenuAnchor, setThemeMenuAnchor] =
@@ -65,11 +68,11 @@ export default function Navigation() {
     handleMenuClose();
   };
 
-  const handleLanguageChange = async (newLang: string) => {
+  const handleLanguageChange = (newLang: string) => {
     console.log('Navigation: Changing language to:', newLang);
 
-    // The store's setLanguage now handles i18next synchronization and HTML attributes
-    await setLanguage(newLang as SupportedLanguage);
+    // Use next-intl routing to change locale
+    router.push(`/${newLang}`);
 
     console.log('Navigation: Language change completed');
     handleMenuClose();
@@ -218,31 +221,15 @@ export default function Navigation() {
         open={Boolean(langMenuAnchor)}
         onClose={handleMenuClose}
       >
-        <MenuItem onClick={() => handleLanguageChange('en')}>
-          🇺🇸 English
-        </MenuItem>
-        <MenuItem onClick={() => handleLanguageChange('es')}>
-          🇪🇸 Español
-        </MenuItem>
-        <MenuItem onClick={() => handleLanguageChange('fr')}>
-          🇫🇷 Français
-        </MenuItem>
-        <MenuItem onClick={() => handleLanguageChange('zh-CN')}>
-          🇨🇳 简体中文
-        </MenuItem>
-        <MenuItem onClick={() => handleLanguageChange('ja')}>
-          🇯🇵 日本語
-        </MenuItem>
-        <MenuItem onClick={() => handleLanguageChange('ko')}>
-          🇰🇷 한국어
-        </MenuItem>
-        <MenuItem onClick={() => handleLanguageChange('no')}>🇳🇴 Norsk</MenuItem>
-        <MenuItem onClick={() => handleLanguageChange('pt-BR')}>
-          🇧🇷 Português (BR)
-        </MenuItem>
-        <MenuItem onClick={() => handleLanguageChange('ar-SA')}>
-          🇸🇦 العربية
-        </MenuItem>
+        {supportedLanguages.map(lang => (
+          <MenuItem
+            key={lang.code}
+            onClick={() => handleLanguageChange(lang.code)}
+            selected={locale === lang.code}
+          >
+            {lang.flag} {lang.name}
+          </MenuItem>
+        ))}
       </Menu>
     </>
   );

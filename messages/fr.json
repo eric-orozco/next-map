@@ -1,0 +1,89 @@
+{
+  "HomePage": {
+    "title": "Next Map",
+    "subtitle": "Cartographie 3D Avancée avec Support VR",
+    "heroDescription": "Vitrine de technologies web de pointe incluant MapLibre GL JS, Material UI, Next.js 15, React 19, TypeScript, et l'intégration WebXR. Conçu pour les navigateurs modernes avec un design responsive mobile-first.",
+    "exploreMaps": "Explorer les Cartes",
+    "viewSource": "Voir le Code",
+    "technologyShowcase": "Vitrine Technologique",
+    "builtWithModernStack": "Construit avec une Stack Moderne",
+    "features": {
+      "advancedMapping": {
+        "title": "Cartographie Avancée",
+        "description": "Alimenté par MapLibre GL JS avec des tuiles vectorielles personnalisées et visualisation de données en temps réel."
+      },
+      "3dVisualization": {
+        "title": "Visualisation 3D",
+        "description": "Rendu de terrain 3D interactif avec élévation personnalisable et effets d'éclairage."
+      },
+      "vrIntegration": {
+        "title": "Intégration VR",
+        "description": "Expérience VR immersive compatible avec les principaux casques VR utilisant l'API WebXR."
+      },
+      "internationalization": {
+        "title": "Internationalisation",
+        "description": "Support multi-langue avec changement de locale dynamique et support de texte RTL."
+      },
+      "authentication": {
+        "title": "Authentification",
+        "description": "Authentification sécurisée avec fournisseurs OAuth et gestion de session basée sur JWT."
+      },
+      "performance": {
+        "title": "Performance",
+        "description": "Optimisé pour la vitesse avec division de code, chargement paresseux et service workers."
+      }
+    }
+  },
+  "Navigation": {
+    "home": "Accueil",
+    "maps": "Cartes",
+    "explore": "Explorer",
+    "create": "Créer une Carte",
+    "dashboard": "Tableau de Bord",
+    "library": "Ma Bibliothèque",
+    "favorites": "Favoris",
+    "trending": "Tendances",
+    "recent": "Récent",
+    "public": "Cartes Publiques",
+    "private": "Cartes Privées",
+    "shared": "Partagées avec Moi"
+  },
+  "Common": {
+    "welcome": "Bienvenue sur Next Map",
+    "description": "Cartographie 3D avancée avec support VR",
+    "loading": "Chargement...",
+    "error": "Une erreur s'est produite",
+    "retry": "Réessayer",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "create": "Créer",
+    "update": "Mettre à jour",
+    "close": "Fermer",
+    "back": "Retour",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "search": "Rechercher",
+    "filter": "Filtrer",
+    "sort": "Trier",
+    "export": "Exporter",
+    "import": "Importer",
+    "share": "Partager",
+    "favorite": "Favori",
+    "unfavorite": "Supprimer des favoris",
+    "like": "J'aime",
+    "unlike": "Je n'aime pas",
+    "comment": "Commentaire",
+    "comments": "Commentaires",
+    "rating": "Note",
+    "reviews": "Avis",
+    "settings": "Paramètres",
+    "profile": "Profil",
+    "help": "Aide",
+    "about": "À propos",
+    "contact": "Contact",
+    "privacy": "Politique de Confidentialité",
+    "terms": "Conditions d'Utilisation"
+  }
+}

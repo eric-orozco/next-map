@@ -1,0 +1,89 @@
+{
+  "HomePage": {
+    "title": "Next Map",
+    "subtitle": "Mapeo 3D Avanzado con Soporte VR",
+    "heroDescription": "Demostración de tecnologías web de vanguardia incluyendo MapLibre GL JS, Material UI, Next.js 15, React 19, TypeScript, e integración WebXR. Construido para navegadores modernos con diseño responsive mobile-first.",
+    "exploreMaps": "Explorar Mapas",
+    "viewSource": "Ver Código",
+    "technologyShowcase": "Muestra de Tecnología",
+    "builtWithModernStack": "Construido con Stack Moderno",
+    "features": {
+      "advancedMapping": {
+        "title": "Mapeo Avanzado",
+        "description": "Impulsado por MapLibre GL JS con tiles vectoriales personalizados y visualización de datos en tiempo real."
+      },
+      "3dVisualization": {
+        "title": "Visualización 3D",
+        "description": "Renderizado interactivo de terreno 3D con elevación personalizable y efectos de iluminación."
+      },
+      "vrIntegration": {
+        "title": "Integración VR",
+        "description": "Experiencia VR inmersiva compatible con los principales auriculares VR usando WebXR API."
+      },
+      "internationalization": {
+        "title": "Internacionalización",
+        "description": "Soporte multi-idioma con cambio dinámico de locale y soporte de texto RTL."
+      },
+      "authentication": {
+        "title": "Autenticación",
+        "description": "Autenticación segura con proveedores OAuth y gestión de sesiones basada en JWT."
+      },
+      "performance": {
+        "title": "Performance",
+        "description": "Optimizado para velocidad con división de código, carga perezosa y service workers."
+      }
+    }
+  },
+  "Navigation": {
+    "home": "Inicio",
+    "maps": "Mapas",
+    "explore": "Explorar",
+    "create": "Crear Mapa",
+    "dashboard": "Dashboard",
+    "library": "Mi Biblioteca",
+    "favorites": "Favoritos",
+    "trending": "Tendencias",
+    "recent": "Recientes",
+    "public": "Mapas Públicos",
+    "private": "Mapas Privados",
+    "shared": "Compartidos Conmigo"
+  },
+  "Common": {
+    "welcome": "Bienvenido a Next Map",
+    "description": "Mapeo 3D avanzado con soporte VR",
+    "loading": "Cargando...",
+    "error": "Ocurrió un error",
+    "retry": "Reintentar",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "create": "Crear",
+    "update": "Actualizar",
+    "close": "Cerrar",
+    "back": "Atrás",
+    "next": "Siguiente",
+    "previous": "Anterior",
+    "search": "Buscar",
+    "filter": "Filtrar",
+    "sort": "Ordenar",
+    "export": "Exportar",
+    "import": "Importar",
+    "share": "Compartir",
+    "favorite": "Favorito",
+    "unfavorite": "Quitar favorito",
+    "like": "Me gusta",
+    "unlike": "No me gusta",
+    "comment": "Comentario",
+    "comments": "Comentarios",
+    "rating": "Calificación",
+    "reviews": "Reseñas",
+    "settings": "Configuración",
+    "profile": "Perfil",
+    "help": "Ayuda",
+    "about": "Acerca de",
+    "contact": "Contacto",
+    "privacy": "Política de Privacidad",
+    "terms": "Términos de Servicio"
+  }
+}

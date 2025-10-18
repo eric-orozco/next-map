@@ -1,0 +1,89 @@
+{
+  "HomePage": {
+    "title": "Next Map",
+    "subtitle": "Advanced 3D Mapping with VR Support",
+    "heroDescription": "Showcase of cutting-edge web technologies including MapLibre GL JS, Material UI, Next.js 15, React 19, TypeScript, and WebXR integration. Built for modern browsers with mobile-first responsive design.",
+    "exploreMaps": "Explore Maps",
+    "viewSource": "View Source",
+    "technologyShowcase": "Technology Showcase",
+    "builtWithModernStack": "Built With Modern Stack",
+    "features": {
+      "advancedMapping": {
+        "title": "Advanced Mapping",
+        "description": "Powered by MapLibre GL JS with custom vector tiles and real-time data visualization."
+      },
+      "3dVisualization": {
+        "title": "3D Visualization",
+        "description": "Interactive 3D terrain rendering with customizable elevation and lighting effects."
+      },
+      "vrIntegration": {
+        "title": "VR Integration",
+        "description": "Immersive VR experience compatible with major VR headsets using WebXR API."
+      },
+      "internationalization": {
+        "title": "Internationalization",
+        "description": "Multi-language support with dynamic locale switching and RTL text support."
+      },
+      "authentication": {
+        "title": "Authentication",
+        "description": "Secure authentication with OAuth providers and JWT-based session management."
+      },
+      "performance": {
+        "title": "Performance",
+        "description": "Optimized for speed with code splitting, lazy loading, and service workers."
+      }
+    }
+  },
+  "Navigation": {
+    "home": "Home",
+    "maps": "Maps",
+    "explore": "Explore",
+    "create": "Create Map",
+    "dashboard": "Dashboard",
+    "library": "My Library",
+    "favorites": "Favorites",
+    "trending": "Trending",
+    "recent": "Recent",
+    "public": "Public Maps",
+    "private": "Private Maps",
+    "shared": "Shared with Me"
+  },
+  "Common": {
+    "welcome": "Welcome to Next Map",
+    "description": "Advanced 3D mapping with VR support",
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "retry": "Retry",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "update": "Update",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "export": "Export",
+    "import": "Import",
+    "share": "Share",
+    "favorite": "Favorite",
+    "unfavorite": "Unfavorite",
+    "like": "Like",
+    "unlike": "Unlike",
+    "comment": "Comment",
+    "comments": "Comments",
+    "rating": "Rating",
+    "reviews": "Reviews",
+    "settings": "Settings",
+    "profile": "Profile",
+    "help": "Help",
+    "about": "About",
+    "contact": "Contact",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  }
+}

@@ -8,8 +8,9 @@ import {
   MenuItem,
   SelectChangeEvent,
 } from '@mui/material';
-import { useAppStore } from '@/stores/appStore';
-import { supportedLanguages, type SupportedLanguage } from '@/lib/i18n';
+import { useLocale } from 'next-intl';
+import { useRouter } from 'next/navigation';
+import { supportedLanguages, type Locale as SupportedLanguage } from '@/i18n';
 
 interface LanguageSelectorProps {
   readonly variant?: 'standard' | 'outlined' | 'filled';
@@ -20,15 +21,16 @@ export default function LanguageSelector({
   variant = 'outlined',
   size = 'small',
 }: LanguageSelectorProps) {
-  const { language, setLanguage } = useAppStore();
+  const locale = useLocale();
+  const router = useRouter();
 
-  const handleLanguageChange = async (event: SelectChangeEvent) => {
+  const handleLanguageChange = (event: SelectChangeEvent) => {
     const newLanguage = event.target.value as SupportedLanguage;
 
     console.log('LanguageSelector: Changing language to:', newLanguage);
 
-    // The store's setLanguage now handles i18next synchronization and HTML attributes
-    await setLanguage(newLanguage);
+    // Use next-intl routing to change locale
+    router.push(`/${newLanguage}`);
 
     console.log('LanguageSelector: Language change completed');
   };
@@ -38,7 +40,7 @@ export default function LanguageSelector({
       <InputLabel id="language-select-label">Language</InputLabel>
       <Select
         labelId="language-select-label"
-        value={language}
+        value={locale}
         onChange={handleLanguageChange}
         label="Language"
       >

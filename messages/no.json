@@ -1,0 +1,89 @@
+{
+  "HomePage": {
+    "title": "Next Map",
+    "subtitle": "Avansert 3D-kartlegging med VR-støtte",
+    "heroDescription": "Fremvisning av banebrytende webteknologier inkludert MapLibre GL JS, Material UI, Next.js 15, React 19, TypeScript og WebXR-integrasjon. Bygget for moderne nettlesere med mobil-først responsivt design.",
+    "exploreMaps": "Utforsk Kart",
+    "viewSource": "Se Kildekode",
+    "technologyShowcase": "Teknologi Fremvisning",
+    "builtWithModernStack": "Bygget med Moderne Stack",
+    "features": {
+      "advancedMapping": {
+        "title": "Avansert Kartlegging",
+        "description": "Drevet av MapLibre GL JS med tilpassede vektorfliser og sanntids datavisualisering."
+      },
+      "3dVisualization": {
+        "title": "3D Visualisering",
+        "description": "Interaktiv 3D terrengrendering med tilpassbar høyde og lyseffekter."
+      },
+      "vrIntegration": {
+        "title": "VR Integrasjon",
+        "description": "Oppslukende VR-opplevelse kompatibel med store VR-hodetelefoner ved hjelp av WebXR API."
+      },
+      "internationalization": {
+        "title": "Internasjonalisering",
+        "description": "Flerspråklig støtte med dynamisk språkbytte og RTL-tekststøtte."
+      },
+      "authentication": {
+        "title": "Autentisering",
+        "description": "Sikker autentisering med OAuth-leverandører og JWT-basert sesjonshåndtering."
+      },
+      "performance": {
+        "title": "Ytelse",
+        "description": "Optimalisert for hastighet med kodedeling, lat lasting og service workers."
+      }
+    }
+  },
+  "Navigation": {
+    "home": "Hjem",
+    "maps": "Kart",
+    "explore": "Utforsk",
+    "create": "Opprett Kart",
+    "dashboard": "Dashbord",
+    "library": "Mitt Bibliotek",
+    "favorites": "Favoritter",
+    "trending": "Populært",
+    "recent": "Nylig",
+    "public": "Offentlige Kart",
+    "private": "Private Kart",
+    "shared": "Delt med Meg"
+  },
+  "Common": {
+    "welcome": "Velkommen til Next Map",
+    "description": "Avansert 3D-kartlegging med VR-støtte",
+    "loading": "Laster...",
+    "error": "En feil oppstod",
+    "retry": "Prøv igjen",
+    "save": "Lagre",
+    "cancel": "Avbryt",
+    "delete": "Slett",
+    "edit": "Rediger",
+    "create": "Opprett",
+    "update": "Oppdater",
+    "close": "Lukk",
+    "back": "Tilbake",
+    "next": "Neste",
+    "previous": "Forrige",
+    "search": "Søk",
+    "filter": "Filter",
+    "sort": "Sorter",
+    "export": "Eksporter",
+    "import": "Importer",
+    "share": "Del",
+    "favorite": "Favoritt",
+    "unfavorite": "Fjern favoritt",
+    "like": "Lik",
+    "unlike": "Ikke lik",
+    "comment": "Kommentar",
+    "comments": "Kommentarer",
+    "rating": "Vurdering",
+    "reviews": "Anmeldelser",
+    "settings": "Innstillinger",
+    "profile": "Profil",
+    "help": "Hjelp",
+    "about": "Om",
+    "contact": "Kontakt",
+    "privacy": "Personvernregler",
+    "terms": "Vilkår for bruk"
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "HomePage": {
+    "title": "Next Map",
+    "subtitle": "支持VR的高级3D地图",
+    "heroDescription": "展示尖端网络技术，包括MapLibre GL JS、Material UI、Next.js 15、React 19、TypeScript和WebXR集成。为现代浏览器构建，采用移动端优先的响应式设计。",
+    "exploreMaps": "探索地图",
+    "viewSource": "查看源码",
+    "technologyShowcase": "技术展示",
+    "builtWithModernStack": "现代技术栈构建",
+    "features": {
+      "advancedMapping": {
+        "title": "高级地图",
+        "description": "由MapLibre GL JS驱动，具有自定义矢量瓦片和实时数据可视化。"
+      },
+      "3dVisualization": {
+        "title": "3D可视化",
+        "description": "交互式3D地形渲染，具有可定制的高程和光照效果。"
+      },
+      "vrIntegration": {
+        "title": "VR集成",
+        "description": "使用WebXR API的沉浸式VR体验，兼容主要VR头显。"
+      },
+      "internationalization": {
+        "title": "国际化",
+        "description": "多语言支持，具有动态语言切换和RTL文本支持。"
+      },
+      "authentication": {
+        "title": "身份验证",
+        "description": "使用OAuth提供商和基于JWT的会话管理的安全身份验证。"
+      },
+      "performance": {
+        "title": "性能",
+        "description": "通过代码分割、懒加载和服务工作者优化速度。"
+      }
+    }
+  },
+  "Navigation": {
+    "home": "首页",
+    "maps": "地图",
+    "explore": "探索",
+    "create": "创建地图",
+    "dashboard": "仪表板",
+    "library": "我的库",
+    "favorites": "收藏夹",
+    "trending": "热门",
+    "recent": "最近",
+    "public": "公共地图",
+    "private": "私人地图",
+    "shared": "与我共享"
+  },
+  "Common": {
+    "welcome": "欢迎来到Next Map",
+    "description": "支持VR的高级3D地图",
+    "loading": "加载中...",
+    "error": "发生错误",
+    "retry": "重试",
+    "save": "保存",
+    "cancel": "取消",
+    "delete": "删除",
+    "edit": "编辑",
+    "create": "创建",
+    "update": "更新",
+    "close": "关闭",
+    "back": "返回",
+    "next": "下一个",
+    "previous": "上一个",
+    "search": "搜索",
+    "filter": "筛选",
+    "sort": "排序",
+    "export": "导出",
+    "import": "导入",
+    "share": "分享",
+    "favorite": "收藏",
+    "unfavorite": "取消收藏",
+    "like": "喜欢",
+    "unlike": "不喜欢",
+    "comment": "评论",
+    "comments": "评论",
+    "rating": "评分",
+    "reviews": "评价",
+    "settings": "设置",
+    "profile": "个人资料",
+    "help": "帮助",
+    "about": "关于",
+    "contact": "联系",
+    "privacy": "隐私政策",
+    "terms": "服务条款"
+  }
+}
