@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter, Orbitron } from 'next/font/google';
 import ThemeProviderWrapper from '@/components/ThemeProvider';
+import AppInitializer from '@/components/AppInitializer';
 import './globals.css';
 
 // Font configurations
@@ -79,6 +80,7 @@ export default function RootLayout({
         className={`${inter.variable} ${orbitron.variable}`}
         suppressHydrationWarning
       >
+        <AppInitializer />
         <ThemeProviderWrapper>{children}</ThemeProviderWrapper>
       </body>
     </html>

@@ -27,7 +27,11 @@ import MapComponent from '@/components/MapComponent';
 
 export default function Home() {
   const theme = useTheme();
-  const { t } = useTranslation('homepage');
+  const { t, i18n } = useTranslation('homepage');
+  
+  // Debug current language
+  console.log('Homepage: Current language:', i18n.language);
+  console.log('Homepage: Translation example:', t('title'));
 
   const features = [
     {

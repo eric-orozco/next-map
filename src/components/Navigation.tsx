@@ -66,9 +66,12 @@ export default function Navigation() {
   };
 
   const handleLanguageChange = async (newLang: string) => {
+    console.log('Navigation: Changing language to:', newLang);
+    
     // The store's setLanguage now handles i18next synchronization and HTML attributes
     await setLanguage(newLang as SupportedLanguage);
 
+    console.log('Navigation: Language change completed');
     handleMenuClose();
   };
 
