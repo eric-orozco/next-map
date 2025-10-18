@@ -29,8 +29,8 @@ jest.mock('next-intl', () => ({
       'Common.error': 'An error occurred',
       'Common.save': 'Save',
     };
-    
-    return (key) => {
+
+    return key => {
       const fullKey = `${namespace}.${key}`;
       return translations[fullKey] || key;
     };
@@ -42,7 +42,7 @@ jest.mock('next-intl', () => ({
 // Mock next-intl/server
 jest.mock('next-intl/server', () => ({
   getMessages: jest.fn().mockResolvedValue({}),
-  getTranslations: jest.fn(() => (key) => key),
+  getTranslations: jest.fn(() => key => key),
   setRequestLocale: jest.fn(),
 }));
 
