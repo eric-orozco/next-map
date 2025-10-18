@@ -27,7 +27,7 @@ import {
 import { useTranslation } from 'react-i18next';
 import { useAppStore } from '@/stores/appStore';
 import { ThemeMode } from '@/lib/theme';
-import i18n from '@/lib/i18n';
+import { type SupportedLanguage } from '@/lib/i18n';
 
 export default function Navigation() {
   const theme = useTheme();
@@ -65,18 +65,9 @@ export default function Navigation() {
     handleMenuClose();
   };
 
-  const handleLanguageChange = (newLang: string) => {
-    setLanguage(newLang);
-    i18n.changeLanguage(newLang);
-
-    // Set HTML dir attribute for RTL languages
-    if (newLang === 'ar-SA') {
-      document.documentElement.dir = 'rtl';
-      document.documentElement.lang = newLang;
-    } else {
-      document.documentElement.dir = 'ltr';
-      document.documentElement.lang = newLang;
-    }
+  const handleLanguageChange = async (newLang: string) => {
+    // The store's setLanguage now handles i18next synchronization and HTML attributes
+    await setLanguage(newLang as SupportedLanguage);
 
     handleMenuClose();
   };

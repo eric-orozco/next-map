@@ -11,8 +11,6 @@ import {
 import { useAppStore } from '@/stores/appStore';
 import {
   supportedLanguages,
-  changeLanguage,
-  getTextDirection,
   type SupportedLanguage,
 } from '@/lib/i18n';
 
@@ -27,19 +25,11 @@ export default function LanguageSelector({
 }: LanguageSelectorProps) {
   const { language, setLanguage } = useAppStore();
 
-  const handleLanguageChange = (event: SelectChangeEvent) => {
+  const handleLanguageChange = async (event: SelectChangeEvent) => {
     const newLanguage = event.target.value as SupportedLanguage;
-    setLanguage(newLanguage);
-
-    // Use the centralized changeLanguage function
-    changeLanguage(newLanguage)
-      .then(() => {
-        // Set HTML dir attribute and lang using centralized function
-        const textDirection = getTextDirection();
-        document.documentElement.dir = textDirection;
-        document.documentElement.lang = newLanguage;
-      })
-      .catch(console.error);
+    
+    // The store's setLanguage now handles i18next synchronization and HTML attributes
+    await setLanguage(newLanguage);
   };
 
   return (

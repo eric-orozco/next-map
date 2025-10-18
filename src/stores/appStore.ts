@@ -1,6 +1,18 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { ThemeMode } from '@/lib/theme';
+import { 
+  changeLanguage, 
+  getCurrentLanguage, 
+  type SupportedLanguage 
+} from '@/lib/i18n';
+
+// RTL languages
+const RTL_LANGUAGES = new Set<SupportedLanguage>(['ar-SA']);
+
+// Helper function to check if a language is RTL
+const isRTLLanguage = (lang: SupportedLanguage): boolean => 
+  RTL_LANGUAGES.has(lang);
 
 interface AppState {
   // Theme
@@ -8,8 +20,10 @@ interface AppState {
   setThemeMode: (mode: ThemeMode) => void;
 
   // Language
-  language: string;
-  setLanguage: (lang: string) => void;
+  language: SupportedLanguage;
+  setLanguage: (lang: SupportedLanguage) => Promise<void>;
+  syncLanguageWithI18n: () => void;
+  initializeLanguage: () => Promise<void>;
   isRTL: boolean;
   setIsRTL: (isRTL: boolean) => void;
 
@@ -51,9 +65,42 @@ export const useAppStore = create<AppState>()(
 
       // Language
       language: 'en',
-      setLanguage: lang => {
-        const isRTL = ['ar-SA'].includes(lang);
-        set({ language: lang, isRTL });
+      setLanguage: async lang => {
+        const isRTL = isRTLLanguage(lang);
+        
+        // Sync with i18next first
+        try {
+          await changeLanguage(lang);
+          
+          // Update HTML document attributes
+          if (typeof document !== 'undefined') {
+            document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
+            document.documentElement.lang = lang;
+          }
+          
+          // Only update store if i18next change was successful
+          set({ language: lang, isRTL });
+        } catch (error) {
+          console.error('Failed to change language:', error);
+          // Don't update the store if i18next fails
+        }
+      },
+      syncLanguageWithI18n: () => {
+        const currentLang = getCurrentLanguage();
+        const isRTL = isRTLLanguage(currentLang);
+        set({ language: currentLang, isRTL });
+      },
+      initializeLanguage: async () => {
+        const currentLang = getCurrentLanguage();
+        const isRTL = isRTLLanguage(currentLang);
+        
+        // Update HTML document attributes
+        if (typeof document !== 'undefined') {
+          document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
+          document.documentElement.lang = currentLang;
+        }
+        
+        set({ language: currentLang, isRTL });
       },
       isRTL: false,
       setIsRTL: isRTL => set({ isRTL }),
