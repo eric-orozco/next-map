@@ -1,146 +1,56 @@
-# Next Map - Advanced 3D Mapping with VR Support
+# Next Map - Advanced 3D Mapping Platform
 
 [![CI/CD Pipeline](https://github.com/eric-orozco/next-map/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/eric-orozco/next-map/actions/workflows/ci-cd.yml)
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Next.js](https:/## 🌍 Internationalization
+[![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat&logo=next.js&logoColor=white)](https://nextjs.org/)
 
-### Language Support (9 Languages)
+## Table of Contents
 
-| Language                  | Code    | Status      | RTL | Coverage |
-| ------------------------- | ------- | ----------- | --- | -------- |
-| 🇺🇸 English                | `en`    | ✅ Primary  | No  | 100%     |
-| 🇪🇸 Spanish                | `es`    | ✅ Complete | No  | 100%     |
-| 🇫🇷 French                 | `fr`    | ✅ Complete | No  | 100%     |
-| 🇨🇳 Chinese (Simplified)   | `zh-CN` | ✅ Complete | No  | 100%     |
-| 🇯🇵 Japanese               | `ja`    | ✅ Complete | No  | 100%     |
-| 🇰🇷 Korean                 | `ko`    | ✅ Complete | No  | 100%     |
-| 🇳🇴 Norwegian              | `no`    | ✅ Complete | No  | 100%     |
-| 🇧🇷 Portuguese (Brazilian) | `pt-BR` | ✅ Complete | No  | 100%     |
-| 🇸🇦 Arabic (Saudi Arabia)  | `ar-SA` | ✅ Complete | Yes | 100%     |
+- [Features](#features)
+- [Technology Stack](#technology-stack)
+- [Quick Start](#quick-start)
+- [CI/CD & Deployment](#cicd--deployment)
+- [Development Guide](#development-guide)
+- [Internationalization](#internationalization)
+- [Testing Strategy](#testing-strategy)
+- [Architecture](#architecture)
 
-### i18n Architecture
+> A modern 3D mapping platform built with Next.js 15, React 19, TypeScript, and MapLibre GL JS. Features advanced internationalization, Material UI theming, and server-side rendering optimization.
 
-#### Translation Structure
-
-```
-public/locales/
-├── en/
-│   ├── common.json      # Shared UI elements
-│   ├── navigation.json  # Navigation menu
-│   ├── homepage.json    # Homepage content
-│   ├── map.json        # Map interface
-│   ├── auth.json       # Authentication
-│   └── errors.json     # Error messages
-└── [other-languages]/  # Same structure for all languages
-```
-
-#### SSR-Optimized Loading
-
-```typescript
-// Critical translations embedded for SSR
-export const criticalTranslations = {
-  en: {
-    common: {
-      /* essential UI text */
-    },
-    navigation: {
-      /* menu items */
-    },
-    homepage: {
-      /* homepage content */
-    },
-  },
-};
-
-// Lazy loading for additional content
-const { t } = useTranslation('map'); // Loads map.json on demand
-```
-
-#### RTL Support (Arabic)
-
-- Automatic layout direction switching
-- RTL-optimized Material UI components
-- Mirrored navigation and content flow
-- Cultural date/number formatting
-
-#### Usage Examples
-
-````typescript
-// In components
-const { t } = useTranslation('common');
-return <Button>{t('save')}</Button>;
-
-// Language switching
-const { changeLanguage } = useTranslation();
-await changeLanguage('es'); // Switch to Spanish
-
-// Namespace loading
-const { t: tMap } = useTranslation('map');
-const { t: tAuth } = useTranslation('auth');
-```/badge/Next.js-000000?style=flat&logo=next.js&logoColor=white)](https://nextjs.org/)
-[![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat&logo=vercel&logoColor=white)](https://vercel.com/)
-
-> A showcase of cutting-edge web technologies including MapLibre GL JS, Material UI, Next.js 15, React 19, TypeScript, and WebXR integration. Built for modern browsers with mobile-first responsive design and full SSR support.
-
-![Next Map Preview](https://via.placeholder.com/800x400/1976d2/ffffff?text=Next+Map+Preview)
-
-## 🚀 Live Demo
-
-**🌐 Production**: [next-map.vercel.app](https://next-map.vercel.app) *(Deploy with `vercel --prod`)*
-
-## 📋 Table of Contents
-
-- [Features](#-features)
-- [Technology Stack](#-technology-stack)
-- [Quick Start](#-quick-start)
-- [Development Guide](#-development-guide)
-- [Deployment](#-deployment)
-- [CI/CD Pipeline](#-cicd-pipeline)
-- [Testing Strategy](#-testing-strategy)
-- [Codebase Architecture](#-codebase-architecture)
-- [Internationalization](#-internationalization)
-- [Contributing](#-contributing)
-
-## 🚀 Features
+## Features
 
 ### Core Mapping Features
 
-- **Advanced 3D Mapping** - Powered by MapLibre GL JS with custom vector tiles
-- **VR Integration** - WebXR-compatible VR experience for immersive mapping
-- **Real-time Data Visualization** - Dynamic map layers and interactive markers
+- **Advanced 3D Mapping** - Powered by MapLibre GL JS with vector tile support
+- **Interactive Visualization** - Dynamic map layers and interactive markers
 - **Custom Map Styles** - Multiple themes including light, dark, and cyberpunk modes
+- **Performance Optimized** - Server-side rendering with hydration optimization
 
 ### User Experience
 
 - **Mobile-First Responsive Design** - Optimized for mobile, tablet, and desktop
-- **Material UI Components** - Modern, accessible component library
-- **Multiple Themes** - Light, dark, and cyberpunk themes with smooth transitions
-- **Internationalization** - Multi-language support (English, Spanish, French)
+- **Material UI Components** - Modern, accessible component library with theming
+- **Multiple Themes** - Light, dark, and custom themes with smooth transitions
+- **Advanced Internationalization** - 9-language support with RTL layout for Arabic
 
-### Authentication & Security
-
-- **NextAuth.js Integration** - Secure authentication with OAuth providers
-- **JWT Session Management** - Stateless authentication with secure tokens
-- **PostgreSQL Database** - Robust data persistence with Prisma ORM
-
-### Performance & Development
+### Development & Performance
 
 - **Next.js 15 with Turbopack** - Latest Next.js with ultra-fast bundling
+- **React 19** - Latest React with concurrent features
 - **TypeScript** - Full type safety throughout the application
-- **pnpm Package Manager** - Fastest and most efficient package management
 - **Comprehensive Testing** - Jest unit tests and Playwright E2E tests
+- **Modern State Management** - Zustand for lightweight, efficient state handling
 
-## 🛠 Technology Stack
+## Technology Stack
 
 ### Frontend
 
-- **Next.js 15** - React framework with App Router
+- **Next.js 15** - React framework with App Router and Turbopack
 - **React 19** - Latest React with concurrent features
 - **TypeScript** - Type-safe development
 - **Material UI v7** - Modern React component library
 - **Emotion** - CSS-in-JS styling solution
 - **MapLibre GL JS** - Open-source mapping library with 3D terrain
-- **Framer Motion** - Smooth animations and transitions
 
 ### State Management & Data
 
@@ -148,62 +58,49 @@ const { t: tAuth } = useTranslation('auth');
 - **React Hook Form** - Performant form handling
 - **Zod** - Schema validation
 - **Prisma** - Next-generation ORM
-- **PostgreSQL** - Robust relational database
 
-### Authentication & Internationalization
+### Internationalization
 
-- **NextAuth.js** - Complete authentication solution
-- **i18next** - Internationalization framework
-- **React i18next** - React integration for i18n
+- **next-intl** - Server-side internationalization framework
+- **RTL Layout Support** - Right-to-left text direction for Arabic
 
 ### Testing & Quality
 
-- **Jest** - Unit testing framework
-- **Testing Library** - React component testing
-- **Playwright** - End-to-end testing
-- **ESLint** - Code linting and formatting
-- **TypeScript** - Static type checking
+- **Jest** - Unit testing framework with coverage
+- **Testing Library** - React component testing utilities
+- **Playwright** - Cross-browser end-to-end testing
+- **ESLint** - Code linting and style enforcement
+- **Prettier** - Code formatting
 
-### DevOps & Performance
+### Development Tools
 
 - **pnpm** - Fast, disk space efficient package manager
-- **Turbopack** - Next-generation bundler
-- **PWA Ready** - Progressive web app capabilities
-- **Docker Ready** - Containerization support
+- **Turbopack** - Next-generation bundler for development
+- **TypeScript** - Static type checking and IntelliSense
 
-## ✅ Project Status
+## Project Status
 
-### 🎯 Latest Updates (September 2025)
+### Latest Updates (October 2025)
 
-- ✅ **Upgraded to React 19** - Latest React with concurrent features
-- ✅ **Updated to Material UI v7** - Latest component library version
-- ✅ **Removed Three.js Dependencies** - Clean architecture focused on MapLibre 3D
-- ✅ **Added 6 New Languages** - Chinese, Japanese, Korean, Norwegian, Portuguese, Arabic
-- ✅ **Implemented RTL Support** - Right-to-left layout for Arabic language
-- ✅ **Enhanced i18n System** - Comprehensive translation coverage across all components
+- **Migrated to next-intl** - Server-side internationalization with SSR optimization
+- **Fixed Hydration Issues** - Resolved client-server mismatch in theme and RTL rendering
+- **Enhanced E2E Testing** - Comprehensive Playwright test coverage across browsers
+- **Upgraded to React 19** - Latest React with concurrent features
+- **Updated to Material UI v7** - Latest component library version
+- **Added Multi-Language Support** - Complete translations with RTL support for Arabic
+- **Optimized Build Performance** - Turbopack integration for faster development
 
-### 🌍 Language Support
 
-The application now supports **9 languages** with complete translations:
 
-- 🇺🇸 **English** (Primary)
-- 🇪🇸 **Spanish**
-- 🇫🇷 **French**
-- 🇨🇳 **Chinese (Simplified)**
-- 🇯🇵 **Japanese**
-- 🇰🇷 **Korean**
-- 🇳🇴 **Norwegian**
-- 🇧🇷 **Portuguese (Brazilian)**
-- 🇸🇦 **Arabic (Saudi Arabia)** with RTL support
-
-### 🏗 Architecture Highlights
+### Architecture Highlights
 
 - **Modern React Stack** - React 19 + Next.js 15 + TypeScript
-- **3D Mapping** - MapLibre GL JS with terrain visualization (no Three.js conflicts)
-- **Performance Optimized** - pnpm + Turbopack for lightning-fast builds
-- **Enterprise Ready** - Comprehensive testing, type safety, and i18n
+- **3D Mapping** - MapLibre GL JS with terrain visualization
+- **Server-Side i18n** - next-intl with SSR optimization
+- **Performance Optimized** - Turbopack for lightning-fast builds
+- **Enterprise Ready** - Comprehensive testing, type safety, and internationalization
 
-## � Development Guide
+## Development Guide
 
 ### Environment Setup
 
@@ -267,9 +164,7 @@ The application now supports **9 languages** with complete translations:
 - `pnpm db:migrate` - Create and run migrations
 - `pnpm db:studio` - Open Prisma Studio (database GUI)
 
-#### Deployment
 
-- `pnpm deploy:vercel` - Deploy to Vercel production
 
 ### Development Workflow
 
@@ -311,7 +206,7 @@ The application now supports **9 languages** with complete translations:
 - **Prisma Studio**: Visual database management
 - **pnpm**: Fast, efficient package management
 
-## 📜 Available Scripts
+## Available Scripts
 
 ### Development Commands
 
@@ -338,152 +233,118 @@ The application now supports **9 languages** with complete translations:
 - `pnpm db:migrate` - Create and run database migrations (production)
 - `pnpm db:studio` - Open Prisma Studio visual database editor
 
-### Deployment Commands
 
-- `pnpm deploy:vercel` - Deploy to Vercel production environment
 
-## 🏗 Codebase Architecture
+## Architecture
 
 ### Project Structure
 
 ```
 next-map/
-├── .github/                # GitHub Actions workflows and templates
-│   ├── workflows/          # CI/CD pipeline configuration
-│   ├── ISSUE_TEMPLATE/     # Issue templates
-│   └── pull_request_template.md
-├── prisma/                 # Database schema and migrations
-│   ├── schema.prisma       # Prisma database schema
-│   └── migrations/         # Database migration files
-├── public/                 # Static assets and i18n files
-│   ├── locales/           # Translation files (9 languages)
-│   │   ├── en/            # English translations
-│   │   ├── es/            # Spanish translations
-│   │   └── ...            # Other language directories
-│   └── icons/             # Static icons and images
+├── .github/workflows/     # CI/CD pipeline configuration
+├── messages/             # Translation files (9 languages)
 ├── src/
-│   ├── app/               # Next.js App Router (routes & layouts)
-│   │   ├── layout.tsx     # Root layout with providers
-│   │   ├── page.tsx       # Homepage component
-│   │   └── globals.css    # Global styles
-│   ├── components/        # Reusable React components
-│   │   ├── Navigation.tsx  # App navigation bar
-│   │   ├── MapComponent.tsx # 3D map integration
-│   │   └── __tests__/     # Component unit tests
-│   ├── lib/              # Utility libraries and configurations
-│   │   ├── i18n.ts       # Internationalization setup
-│   │   ├── theme.ts      # Material UI theme configuration
-│   │   └── criticalTranslations.ts # SSR translations
-│   ├── stores/           # Zustand state management
-│   │   ├── appStore.ts   # Global app state
-│   │   └── mapStore.ts   # Map-specific state
-│   └── types/            # TypeScript type definitions
-├── tests/
-│   └── e2e/              # Playwright end-to-end tests
-│       └── homepage.spec.ts # Homepage functionality tests
-├── jest.config.js         # Jest testing configuration
-├── playwright.config.ts   # Playwright E2E configuration
-├── next.config.ts         # Next.js configuration
-├── vercel.json            # Vercel deployment configuration
-├── .vercelignore          # Files to ignore during Vercel deployment
-└── package.json           # Dependencies and scripts
+│   ├── app/             # Next.js App Router
+│   │   ├── [locale]/    # Internationalized routes
+│   │   └── layout.tsx   # Root layout
+│   ├── components/      # React components + tests
+│   ├── i18n/           # next-intl configuration
+│   ├── lib/            # Utilities and theme
+│   ├── stores/         # Zustand state management
+│   └── middleware.ts   # i18n routing middleware
+├── tests/e2e/          # Playwright E2E tests
+└── [config files]     # Jest, Playwright, Next.js, etc.
 ```
+
+
 
 ### Key Architecture Patterns
 
-#### 1. **Server-Side Rendering (SSR)**
-
-- Next.js App Router with full SSR support
-- Critical translations embedded for fast first paint
-- SEO-optimized meta tags and structured data
-- Material UI server-side styling
-
-#### 2. **State Management**
-
-```typescript
-// Zustand stores for client-side state
-const useAppStore = create(set => ({
-  theme: 'light',
-  language: 'en',
-  setTheme: theme => set({ theme }),
-  setLanguage: language => set({ language }),
-}));
-```
-
-#### 3. **Internationalization Architecture**
-
-```typescript
-// Multi-layer i18n system
-- Critical translations (SSR-embedded)
-- Lazy-loaded translations (client-side)
-- RTL support for Arabic
-- Namespace organization (common, navigation, map, etc.)
-```
-
-#### 4. **Component Architecture**
-
-```typescript
-// TypeScript-first component design
-interface NavigationProps {
-  variant?: 'default' | 'minimal';
-  showLanguageSelector?: boolean;
-}
-
-export const Navigation: React.FC<NavigationProps> = ({ variant = 'default', showLanguageSelector = true }) => {
-  // Component implementation
-};
-```
-
-#### 5. **Testing Strategy**
-
-```typescript
-// Comprehensive testing approach
-- Unit tests: Jest + Testing Library
-- E2E tests: Playwright (cross-browser)
-- Type safety: TypeScript strict mode
-- Code quality: ESLint + Prettier
-```
-
-### Performance Optimizations
-
-- **Turbopack**: Next-generation bundler for fast development
-- **Code Splitting**: Automatic route-based code splitting
-- **Image Optimization**: Next.js Image component with WebP
-- **Bundle Analysis**: Built-in bundle analyzer
-- **Caching Strategy**: Multi-layer caching (build, runtime, CDN)
-
-### Security Features
+- **Server-Side Rendering** - Full SSR with next-intl integration
+- **Type Safety** - TypeScript throughout with strict mode
+- **Modern State Management** - Zustand for lightweight, efficient state
+- **Component Testing** - Jest + Testing Library for unit tests
+- **E2E Testing** - Playwright for cross-browser validation
+- **Performance** - Turbopack bundling + automatic code splitting
 
 - **Content Security Policy**: Configured security headers
 - **XSS Protection**: Automatic Next.js protections
 - **CSRF Protection**: NextAuth.js built-in CSRF protection
 - **Dependency Scanning**: Automated security updates via Dependabot
 
-## 🎨 Themes
+## Themes
 
-The application supports multiple themes to showcase design flexibility:
+| Theme     | Description                         | Colors                    |
+| --------- | ----------------------------------- | ------------------------- |
+| Light     | Clean, professional appearance      | Blue primary, white bg    |
+| Dark      | Modern dark mode                    | Blue accents, dark bg     |
+| Cyberpunk | Futuristic neon design             | Neon colors, dark bg      |
 
-- **Light Theme** - Clean, professional appearance
-- **Dark Theme** - Modern dark mode with blue accents
-- **Cyberpunk Theme** - Futuristic neon design with custom fonts
+### Adding New Themes
 
-## � Internationalization
+To add a custom theme:
 
-- **English (EN)** - Primary language
-- **Spanish (ES)** - Full translation support
-- **French (FR)** - Full translation support
-- **Chinese Simplified (ZH-CN)** - Full translation support
-- **Japanese (JA)** - Full translation support
-- **Korean (KO)** - Full translation support
-- **Norwegian (NO)** - Full translation support
-- **Portuguese Brazilian (PT-BR)** - Full translation support
-- **Arabic Saudi Arabia (AR-SA)** - Full translation support with RTL layout
-- **i18next** - Modern internationalization framework
-- **React i18next** - React integration with hooks
-- **RTL Support** - Right-to-left text support for Arabic
-- **Namespace Support** - Organized translations (common, navigation, map, auth, errors)
+1. **Create theme object** in `src/lib/theme.ts`:
+```typescript
+export const myTheme: Theme = createTheme({
+  palette: {
+    mode: 'light', // or 'dark'
+    primary: { main: '#your-color' },
+    background: { default: '#your-bg' },
+    // ... other palette options
+  },
+  typography: {
+    // Custom typography if needed
+  },
+});
+```
 
-## 🧪 Testing Strategy
+2. **Register theme** in the themes object:
+```typescript
+export const themes = {
+  light: lightTheme,
+  dark: darkTheme,
+  cyberpunk: cyberpunkTheme,
+  myTheme: myTheme, // Add your theme here
+} as const;
+```
+
+3. **Theme is automatically available** - The theme switcher will detect and include the new theme.
+
+## Internationalization
+
+| Language                  | Code    | Status      | RTL | Coverage |
+| ------------------------- | ------- | ----------- | --- | -------- |
+| English                   | `en`    | Primary     | No  | 100%     |
+| Spanish                   | `es`    | Complete    | No  | 100%     |
+| French                    | `fr`    | Complete    | No  | 100%     |
+| Chinese (Simplified)      | `zh-CN` | Complete    | No  | 100%     |
+| Japanese                  | `ja`    | Complete    | No  | 100%     |
+| Korean                    | `ko`    | Complete    | No  | 100%     |
+| Norwegian                 | `no`    | Complete    | No  | 100%     |
+| Portuguese (Brazilian)    | `pt-BR` | Complete    | No  | 100%     |
+| Arabic (Saudi Arabia)     | `ar-SA` | Complete    | Yes | 100%     |
+
+### Adding New Languages
+
+To add a new language:
+
+1. **Create message file**: Add `messages/{locale}.json` with translations
+2. **Update routing config**: Add locale to `src/i18n/routing.ts` locales array
+3. **Test RTL support**: For RTL languages, update layout detection in `src/app/[locale]/layout.tsx`
+
+Example for German (`de`):
+```json
+// messages/de.json
+{
+  "HomePage": {
+    "title": "Next Map",
+    "subtitle": "Erweiterte 3D-Kartierung"
+  }
+}
+```
+
+## Testing Strategy
 
 ### Comprehensive Testing Approach
 
@@ -496,11 +357,11 @@ pnpm test:coverage     # Coverage report
 
 **Coverage Areas:**
 
-- ✅ React component rendering and behavior
-- ✅ Custom hooks functionality
-- ✅ Utility functions and helpers
-- ✅ State management (Zustand stores)
-- ✅ i18n integration and translation loading
+- React component rendering and behavior
+- Custom hooks functionality
+- Utility functions and helpers
+- State management (Zustand stores)
+- i18n integration and translation loading
 
 **Example Test:**
 
@@ -525,12 +386,12 @@ pnpm test:e2e:ui       # Interactive mode
 
 **Test Coverage:**
 
-- ✅ Homepage functionality and content loading
-- ✅ Navigation and routing behavior
-- ✅ Language switching and i18n
-- ✅ Responsive design (mobile/desktop)
-- ✅ 3D map rendering and interaction
-- ✅ Theme switching functionality
+- Homepage functionality and content loading
+- Navigation and routing behavior
+- Language switching and i18n
+- Responsive design (mobile/desktop)
+- 3D map rendering and interaction
+- Theme switching functionality
 
 **Browser Support:**
 
@@ -564,56 +425,11 @@ test('should display homepage content', async ({ page }) => {
 - **Code Quality**: ESLint rules enforced
 - **Formatting**: Prettier consistency checks
 
-## 🚀 Deployment
+## Deployment
 
-### Vercel (Recommended for SSR)
+The project is configured for deployment via GitHub Actions pipeline. Push to main branch triggers automatic deployment after all tests pass.
 
-Next Map is optimized for **Vercel deployment** with full **Server-Side Rendering (SSR)** support:
-
-#### Quick Deploy (2 minutes)
-
-```bash
-# Install Vercel CLI and deploy
-npx vercel --prod
-```
-
-#### What You Get on Vercel:
-
-- ✅ **Full SSR Support** - Dynamic server-side rendering
-- ✅ **API Routes** - Serverless backend functionality
-- ✅ **Edge Functions** - Ultra-fast global distribution
-- ✅ **Image Optimization** - Automatic WebP conversion
-- ✅ **Global CDN** - Worldwide performance optimization
-- ✅ **Automatic HTTPS** - Free SSL certificates
-- ✅ **Preview Deployments** - Every PR gets a preview URL
-- ✅ **Analytics** - Performance monitoring (free tier)
-
-#### Production Features:
-
-- **Multi-language SSR** - All 9 languages server-rendered
-- **3D Map Rendering** - MapLibre GL JS with terrain
-- **Material UI SSR** - Styled components server-rendered
-- **Real-time i18n** - Language switching without reload
-
-#### Manual Setup (Optional):
-
-```bash
-# Install Vercel CLI globally
-npm i -g vercel
-
-# Login and deploy
-vercel login
-vercel --prod
-```
-
-#### GitHub Actions Integration:
-
-- Add `VERCEL_TOKEN` to GitHub secrets (simplified setup)
-- Automatic deployments on every push to main
-- Preview deployments for pull requests with rich PR comments
-- Uses official Vercel CLI for reliable deployments
-
-> **📚 Detailed Guide**: See [DEPLOYMENT.md](./DEPLOYMENT.md) for complete setup instructions
+> ** Detailed Guide**: See [DEPLOYMENT.md](./DEPLOYMENT.md) for complete setup instructions
 
 ### Alternative Deployment Options
 
@@ -631,69 +447,72 @@ pnpm build
 pnpm start
 ```
 
-> **⚠️ Note**: Static export disables SSR, API routes, and server-side i18n
+> ** Note**: Static export disables SSR, API routes, and server-side i18n
 
-## 🔄 CI/CD Pipeline
+## CI/CD & Deployment
 
-### GitHub Actions Workflow
+### Automated Deployment Pipeline
 
-The project includes a comprehensive CI/CD pipeline that runs on every push and pull request:
+The project uses **GitHub Actions** for continuous integration and deployment. Every code change triggers an automated pipeline that ensures quality and deploys to production.
 
-#### Pipeline Stages:
+#### Workflow Triggers
 
-1. **Code Quality & Security** (5-8 minutes)
-   - ESLint code linting
-   - TypeScript type checking
-   - Prettier format checking
-   - Security vulnerability scanning
+- **Pull Requests** → Preview deployment + full test suite
+- **Push to main** → Production deployment (after all checks pass)
+- **Manual trigger** → Can be run on-demand via GitHub Actions
 
-2. **Unit Testing** (3-5 minutes)
-   - Jest test suite execution
-   - Code coverage reporting
-   - Codecov integration
-   - 80%+ coverage requirement
+#### Pipeline Stages (Parallel Execution)
 
-3. **End-to-End Testing** (2-3 minutes)
-   - Playwright browser testing
-   - Cross-browser compatibility (CI: Chromium only)
-   - Mobile responsive testing
-   - Homepage functionality validation
+**Stage 1: Code Quality & Security** *(~5 min)*
+- ESLint linting and TypeScript type checking
+- Code formatting validation (Prettier)
+- Security audit for dependencies
 
-4. **Build & Optimization** (3-4 minutes)
-   - Next.js production build
-   - Turbopack bundling optimization
-   - Build artifact caching
-   - Asset optimization validation
+**Stage 2: Unit & Integration Tests** *(~8 min)*
+- Jest test suite with coverage reporting
+- Component and utility function testing
+- Coverage uploaded to Codecov
 
-5. **Deployment** (1-2 minutes) _[If Vercel secrets configured]_
-   - Preview deployment (PRs)
-   - Production deployment (main branch)
-   - Deployment status reporting
+**Stage 3: End-to-End Testing** *(~12 min)*
+- Playwright browser testing (Chromium in CI)
+- Homepage functionality and navigation
+- Cross-device responsive design validation
 
-#### Quality Gates:
+**Stage 4: Build & Artifact Creation** *(~10 min)*
+- Next.js production build with Turbopack
+- Build artifact caching for performance
+- Static asset optimization
 
-- ✅ All tests must pass
-- ✅ Code coverage > 80% _(currently disabled for development)_
-- ✅ No TypeScript errors
-- ✅ No ESLint errors
-- ✅ Successful production build
+#### Deployment Process
 
-#### Branch Protection:
+**For Pull Requests:**
+1. All tests and quality checks must pass
+2. **Preview deployment** created automatically
+3. PR automatically commented with preview URL
+4. Preview updates on every commit
 
-- Requires PR reviews
-- Requires status checks to pass
-- No direct pushes to main branch
+**For Production (main branch):**
+1. All pipeline stages must complete successfully
+2. **Production deployment** automatically triggered
+3. GitHub deployment status created
+4. Live site updated automatically
 
-#### Performance Optimizations:
+#### Quality Gates
 
-- **Parallel job execution** - Multiple stages run simultaneously
-- **Dependency caching** - pnpm cache across workflows
-- **Build artifact caching** - Next.js build optimization
-- **Conditional deployments** - Only runs when secrets are available
+All deployments require:
+- Zero TypeScript errors
+- Zero ESLint violations
+- All Jest tests passing
+- All Playwright E2E tests passing
+- Successful production build
+- Security audit passing
 
-### Local Development Pipeline
+#### Performance Optimizations
 
-Run the same checks locally:
+- **Parallel job execution** reduces total pipeline time
+- **Dependency caching** with pnpm for faster installs
+- **Build artifact caching** speeds up subsequent builds
+- **Conditional steps** skip deployment if secrets unavailable
 
 ```bash
 # Run all quality checks
@@ -709,94 +528,32 @@ pnpm build          # Production build
 
 - **GitHub Actions**: Build status and performance metrics
 - **Codecov**: Test coverage reporting and trends
-- **Vercel Analytics**: Production performance monitoring
 - **Dependabot**: Automated dependency updates and security patches
 
-## 🤝 Contributing
+## Contributing
 
 ### Development Process
 
-1. **Fork & Clone**
+1. Fork and clone the repository
+2. Install dependencies: `pnpm install`
+3. Create feature branch: `git checkout -b feature/name`
+4. Make changes and run tests: `pnpm test:coverage && pnpm test:e2e`
+5. Ensure code quality: `pnpm lint && pnpm type-check`
+6. Submit pull request
 
-   ```bash
-   git clone https://github.com/your-username/next-map.git
-   cd next-map
-   pnpm install
-   ```
+### Requirements
 
-2. **Create Feature Branch**
-
-   ```bash
-   git checkout -b feature/amazing-feature
-   ```
-
-3. **Development & Testing**
-
-   ```bash
-   pnpm dev                    # Start development server
-   pnpm test:coverage          # Run unit tests
-   pnpm test:e2e              # Run E2E tests
-   pnpm lint                  # Check code quality
-   pnpm type-check            # Verify TypeScript
-   ```
-
-4. **Commit & Push**
-
-   ```bash
-   git add .
-   git commit -m "feat: add amazing feature"
-   git push origin feature/amazing-feature
-   ```
-
-5. **Pull Request**
-   - Create PR with clear description
-   - Ensure all CI checks pass
-   - Request review from maintainers
-
-### Code Standards
-
-- **TypeScript**: Strict mode enabled, full type coverage
-- **ESLint**: Enforced code quality rules
-- **Prettier**: Automatic code formatting
-- **Conventional Commits**: Structured commit messages
-- **Testing**: Unit tests for new components/functions
-
-### Review Process
-
-- All PRs require approval from code owners
-- CI/CD pipeline must pass all checks
-- Code coverage should not decrease
-- Documentation updates for new features
+- All tests must pass
+- TypeScript strict mode compliance
+- ESLint + Prettier formatting
+- Conventional commit messages
 
 ---
 
-## 📄 Documentation
+## License
 
-- **[DEPLOYMENT.md](./DEPLOYMENT.md)** - Comprehensive deployment guide
-- **[API Documentation](./docs/api.md)** - API endpoints and usage _(coming soon)_
-- **[Component Library](./docs/components.md)** - Component documentation _(coming soon)_
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+MIT License - see [LICENSE](LICENSE) for details.
 
 ---
 
-## 🎯 Project Goals
-
-This project demonstrates:
-
-- **🚀 Modern Stack Mastery** - Next.js 15, React 19, TypeScript, Material UI v7
-- **🌐 Global Accessibility** - 9-language i18n with RTL support
-- **🧪 Quality Engineering** - Comprehensive testing and CI/CD
-- **⚡ Performance Excellence** - SSR, optimization, and monitoring
-- **🛡️ Security Best Practices** - Headers, CSP, dependency scanning
-- **📱 Responsive Design** - Mobile-first, cross-browser compatibility
-- **🎨 Design Systems** - Multiple themes, consistent UI patterns
-- **🔧 Developer Experience** - Fast builds, hot reload, type safety
-
-**Built with ❤️ using cutting-edge web technologies**
-
----
-
-_Ready to explore the future of web mapping? Deploy now with `vercel --prod`_ 🚀
+**Next Map** - A modern 3D mapping platform showcasing Next.js 15, React 19, and advanced internationalization.
