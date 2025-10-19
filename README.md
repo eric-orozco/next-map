@@ -105,6 +105,7 @@
 ### Environment Setup
 
 1. **Clone & Install**
+
    ```bash
    git clone https://github.com/eric-orozco/next-map.git
    cd next-map
@@ -163,8 +164,6 @@
 - `pnpm db:push` - Push schema changes to database
 - `pnpm db:migrate` - Create and run migrations
 - `pnpm db:studio` - Open Prisma Studio (database GUI)
-
-
 
 ### Development Workflow
 
@@ -233,8 +232,6 @@
 - `pnpm db:migrate` - Create and run database migrations (production)
 - `pnpm db:studio` - Open Prisma Studio visual database editor
 
-
-
 ## Architecture
 
 ### Project Structure
@@ -256,8 +253,6 @@ next-map/
 └── [config files]     # Jest, Playwright, Next.js, etc.
 ```
 
-
-
 ### Key Architecture Patterns
 
 - **Server-Side Rendering** - Full SSR with next-intl integration
@@ -274,17 +269,18 @@ next-map/
 
 ## Themes
 
-| Theme     | Description                         | Colors                    |
-| --------- | ----------------------------------- | ------------------------- |
-| Light     | Clean, professional appearance      | Blue primary, white bg    |
-| Dark      | Modern dark mode                    | Blue accents, dark bg     |
-| Cyberpunk | Futuristic neon design             | Neon colors, dark bg      |
+| Theme     | Description                    | Colors                 |
+| --------- | ------------------------------ | ---------------------- |
+| Light     | Clean, professional appearance | Blue primary, white bg |
+| Dark      | Modern dark mode               | Blue accents, dark bg  |
+| Cyberpunk | Futuristic neon design         | Neon colors, dark bg   |
 
 ### Adding New Themes
 
 To add a custom theme:
 
 1. **Create theme object** in `src/lib/theme.ts`:
+
 ```typescript
 export const myTheme: Theme = createTheme({
   palette: {
@@ -300,6 +296,7 @@ export const myTheme: Theme = createTheme({
 ```
 
 2. **Register theme** in the themes object:
+
 ```typescript
 export const themes = {
   light: lightTheme,
@@ -313,17 +310,17 @@ export const themes = {
 
 ## Internationalization
 
-| Language                  | Code    | Status      | RTL | Coverage |
-| ------------------------- | ------- | ----------- | --- | -------- |
-| English                   | `en`    | Primary     | No  | 100%     |
-| Spanish                   | `es`    | Complete    | No  | 100%     |
-| French                    | `fr`    | Complete    | No  | 100%     |
-| Chinese (Simplified)      | `zh-CN` | Complete    | No  | 100%     |
-| Japanese                  | `ja`    | Complete    | No  | 100%     |
-| Korean                    | `ko`    | Complete    | No  | 100%     |
-| Norwegian                 | `no`    | Complete    | No  | 100%     |
-| Portuguese (Brazilian)    | `pt-BR` | Complete    | No  | 100%     |
-| Arabic (Saudi Arabia)     | `ar-SA` | Complete    | Yes | 100%     |
+| Language               | Code    | Status   | RTL | Coverage |
+| ---------------------- | ------- | -------- | --- | -------- |
+| English                | `en`    | Primary  | No  | 100%     |
+| Spanish                | `es`    | Complete | No  | 100%     |
+| French                 | `fr`    | Complete | No  | 100%     |
+| Chinese (Simplified)   | `zh-CN` | Complete | No  | 100%     |
+| Japanese               | `ja`    | Complete | No  | 100%     |
+| Korean                 | `ko`    | Complete | No  | 100%     |
+| Norwegian              | `no`    | Complete | No  | 100%     |
+| Portuguese (Brazilian) | `pt-BR` | Complete | No  | 100%     |
+| Arabic (Saudi Arabia)  | `ar-SA` | Complete | Yes | 100%     |
 
 ### Adding New Languages
 
@@ -334,6 +331,7 @@ To add a new language:
 3. **Test RTL support**: For RTL languages, update layout detection in `src/app/[locale]/layout.tsx`
 
 Example for German (`de`):
+
 ```json
 // messages/de.json
 {
@@ -463,22 +461,26 @@ The project uses **GitHub Actions** for continuous integration and deployment. E
 
 #### Pipeline Stages (Parallel Execution)
 
-**Stage 1: Code Quality & Security** *(~5 min)*
+**Stage 1: Code Quality & Security** _(~5 min)_
+
 - ESLint linting and TypeScript type checking
 - Code formatting validation (Prettier)
 - Security audit for dependencies
 
-**Stage 2: Unit & Integration Tests** *(~8 min)*
+**Stage 2: Unit & Integration Tests** _(~8 min)_
+
 - Jest test suite with coverage reporting
 - Component and utility function testing
 - Coverage uploaded to Codecov
 
-**Stage 3: End-to-End Testing** *(~12 min)*
+**Stage 3: End-to-End Testing** _(~12 min)_
+
 - Playwright browser testing (Chromium in CI)
 - Homepage functionality and navigation
 - Cross-device responsive design validation
 
-**Stage 4: Build & Artifact Creation** *(~10 min)*
+**Stage 4: Build & Artifact Creation** _(~10 min)_
+
 - Next.js production build with Turbopack
 - Build artifact caching for performance
 - Static asset optimization
@@ -486,12 +488,14 @@ The project uses **GitHub Actions** for continuous integration and deployment. E
 #### Deployment Process
 
 **For Pull Requests:**
+
 1. All tests and quality checks must pass
 2. **Preview deployment** created automatically
 3. PR automatically commented with preview URL
 4. Preview updates on every commit
 
 **For Production (main branch):**
+
 1. All pipeline stages must complete successfully
 2. **Production deployment** automatically triggered
 3. GitHub deployment status created
@@ -500,6 +504,7 @@ The project uses **GitHub Actions** for continuous integration and deployment. E
 #### Quality Gates
 
 All deployments require:
+
 - Zero TypeScript errors
 - Zero ESLint violations
 - All Jest tests passing
@@ -557,4 +562,7 @@ MIT License - see [LICENSE](LICENSE) for details.
 ---
 
 **Next Map** - A modern 3D mapping platform showcasing Next.js 15, React 19, and advanced internationalization.
-````
+
+```
+
+```
