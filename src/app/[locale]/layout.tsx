@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import { Inter, Orbitron } from 'next/font/google';
 import { routing } from '@/i18n/routing';
 import ThemeProviderWrapper from '@/components/ThemeProvider';
+import StoreInitializer from '@/components/StoreInitializer';
 import '../globals.css';
 
 // Font configurations
@@ -73,7 +74,8 @@ export default async function LocaleLayout({ children, params }: Props) {
         suppressHydrationWarning
       >
         <NextIntlClientProvider messages={messages} locale={locale}>
-          <ThemeProviderWrapper>{children}</ThemeProviderWrapper>
+          <StoreInitializer />
+          <ThemeProviderWrapper isRTL={isRTL}>{children}</ThemeProviderWrapper>
         </NextIntlClientProvider>
       </body>
     </html>

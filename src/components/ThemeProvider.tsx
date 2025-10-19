@@ -13,13 +13,18 @@ const clientSideEmotionCache = createEmotionCache();
 interface ThemeProviderWrapperProps {
   readonly children: React.ReactNode;
   readonly emotionCache?: EmotionCache;
+  readonly isRTL?: boolean;
 }
 
 export default function ThemeProviderWrapper({
   children,
   emotionCache = clientSideEmotionCache,
+  isRTL: propIsRTL,
 }: ThemeProviderWrapperProps) {
-  const { themeMode, isRTL } = useAppStore();
+  const { themeMode, isRTL: storeIsRTL } = useAppStore();
+
+  // Use prop values for SSR consistency, fall back to store values
+  const isRTL = propIsRTL ?? storeIsRTL;
   const theme = getTheme(themeMode, isRTL);
 
   return (
