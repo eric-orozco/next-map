@@ -4,6 +4,8 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat&logo=next.js&logoColor=white)](https://nextjs.org/)
 
+[🌐 **Live Demo**](https://next-map-beta.vercel.app/)
+
 ## Table of Contents
 
 - [Features](#features)
@@ -90,8 +92,6 @@
 - **Added Multi-Language Support** - Complete translations with RTL support for Arabic
 - **Optimized Build Performance** - Turbopack integration for faster development
 
-
-
 ### Architecture Highlights
 
 - **Modern React Stack** - React 19 + Next.js 15 + TypeScript
@@ -109,6 +109,8 @@
    git clone https://github.com/eric-orozco/next-map.git
    cd next-map
    pnpm install
+   ```
+
 ````
 
 2. **Environment Variables**
@@ -557,3 +559,4 @@ MIT License - see [LICENSE](LICENSE) for details.
 ---
 
 **Next Map** - A modern 3D mapping platform showcasing Next.js 15, React 19, and advanced internationalization.
+````
