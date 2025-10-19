@@ -111,8 +111,6 @@
    pnpm install
    ```
 
-````
-
 2. **Environment Variables**
 
    ```bash
