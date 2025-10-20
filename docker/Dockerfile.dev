@@ -1,0 +1,32 @@
+# Development Dockerfile for hot reloading
+FROM node:20-alpine
+
+RUN apk add --no-cache libc6-compat curl
+
+# Enable corepack for pnpm
+RUN corepack enable
+
+WORKDIR /app
+
+# Copy dependency files
+COPY package.json pnpm-lock.yaml ./
+COPY prisma ./prisma/
+
+# Install dependencies
+RUN pnpm install
+
+# Generate Prisma client
+RUN pnpm db:generate
+
+# Copy source code
+COPY . .
+
+# Expose port
+EXPOSE 3000
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+  CMD curl -f http://localhost:3000/api/health || exit 1
+
+# Start development server
+CMD ["pnpm", "dev"]

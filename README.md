@@ -4,13 +4,14 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat&logo=next.js&logoColor=white)](https://nextjs.org/)
 
-[🌐 **Live Demo**](https://next-map-beta.vercel.app/)
+[**Live Demo**](https://next-map-beta.vercel.app/)
 
 ## Table of Contents
 
 - [Features](#features)
 - [Technology Stack](#technology-stack)
 - [Quick Start](#quick-start)
+- [Docker Setup](#docker-setup)
 - [CI/CD & Deployment](#cicd--deployment)
 - [Development Guide](#development-guide)
 - [Internationalization](#internationalization)
@@ -310,6 +311,10 @@ export const themes = {
 
 ## Internationalization
 
+This project uses **next-intl** for server-side internationalization with consolidated message files. All translations are stored in the `/messages` directory with one JSON file per locale containing all namespaces.
+
+### Supported Languages
+
 | Language               | Code    | Status   | RTL | Coverage |
 | ---------------------- | ------- | -------- | --- | -------- |
 | English                | `en`    | Primary  | No  | 100%     |
@@ -338,9 +343,38 @@ Example for German (`de`):
   "HomePage": {
     "title": "Next Map",
     "subtitle": "Erweiterte 3D-Kartierung"
+  },
+  "Navigation": {
+    "home": "Startseite",
+    "about": "Über uns"
+  },
+  "Common": {
+    "loading": "Laden...",
+    "error": "Fehler"
   }
 }
 ```
+
+### File Structure
+
+```
+messages/
+├── en.json          # English (default)
+├── es.json          # Spanish
+├── fr.json          # French
+├── zh-CN.json       # Chinese (Simplified)
+├── ja.json          # Japanese
+├── ko.json          # Korean
+├── no.json          # Norwegian
+├── pt-BR.json       # Portuguese (Brazilian)
+└── ar-SA.json       # Arabic (Saudi Arabia)
+```
+
+**Message File Format:**
+
+- **Namespaced structure**: Each file contains all translations organized by namespace (HomePage, Navigation, Common, etc.)
+- **Server-side loading**: Messages are loaded server-side by next-intl for optimal performance
+- **Type safety**: TypeScript integration provides autocompletion for translation keys
 
 ## Testing Strategy
 
@@ -445,7 +479,347 @@ pnpm build
 pnpm start
 ```
 
-> ** Note**: Static export disables SSR, API routes, and server-side i18n
+> **Note**: Static export disables SSR, API routes, and server-side i18n
+
+## Docker Setup
+
+This project includes comprehensive Docker support for consistent development and deployment across different environments. The Docker setup provides containerized application and database services with optimized configurations for both development and production.
+
+### Prerequisites
+
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/) (Windows/macOS) or Docker Engine (Linux)
+- Docker Compose (included with Docker Desktop)
+- Basic understanding of Docker concepts (containers, images, volumes)
+
+### Quick Start with Docker
+
+#### 1. Clone and Setup Environment
+
+```bash
+# Clone the repository
+git clone https://github.com/eric-orozco/next-map.git
+cd next-map
+
+# Copy and configure environment variables
+cp .env.docker.example .env.docker
+```
+
+#### 2. Configure Environment Variables
+
+Edit `.env.docker` and update the following required variables:
+
+```bash
+# Database Configuration
+POSTGRES_USER=nextmap
+POSTGRES_PASSWORD=your-secure-password-here
+POSTGRES_DB=nextmap
+POSTGRES_PORT=5432
+
+# Application Configuration
+APP_PORT=3000
+NODE_ENV=production
+
+# NextAuth Configuration
+NEXTAUTH_SECRET=your-super-secret-key-change-this-in-production
+NEXTAUTH_URL=http://localhost:3000
+
+# Optional: Map API Key
+NEXT_PUBLIC_MAP_API_KEY=your-map-api-key-here
+```
+
+#### 3. Start the Application
+
+Choose one of the following methods:
+
+**Using npm scripts (recommended):**
+
+```bash
+# Start production environment
+pnpm docker:up
+
+# Start with build (if you made changes)
+pnpm docker:up:build
+
+# Start development environment with hot reloading
+pnpm docker:up:dev
+```
+
+**Using Docker Compose directly:**
+
+```bash
+# Production
+docker compose -f docker/docker-compose.yml up -d
+
+# Development
+docker compose -f docker/docker-compose.dev.yml up -d
+```
+
+Your application will be available at: **http://localhost:3000**
+
+### Docker Commands Reference
+
+#### Production Environment
+
+```bash
+# Start/Stop Services
+pnpm docker:up                # Start existing containers
+pnpm docker:up:build          # Build and start all services
+pnpm docker:down              # Stop and remove containers
+pnpm docker:down:volumes      # Stop and remove containers + persistent data
+
+# Monitoring & Logs
+pnpm docker:logs              # View all service logs
+pnpm docker:logs:app          # Application logs only
+pnpm docker:logs:postgres     # Database logs only
+
+# Container Access
+pnpm docker:shell             # Shell access to app container
+pnpm docker:db:shell          # PostgreSQL shell access
+
+# Maintenance
+pnpm docker:clean             # Remove unused containers/images
+pnpm docker:reset             # Complete reset (removes all data)
+```
+
+#### Development Environment
+
+```bash
+# Development with Hot Reloading
+pnpm docker:up:dev            # Start development environment
+pnpm docker:build:dev         # Build development image only
+
+# Using convenience scripts (from project root)
+./scripts/docker-dev.sh       # Start development environment
+./scripts/docker-prod.sh      # Start production environment
+```
+
+#### Manual Docker Commands
+
+If you prefer to use Docker commands directly:
+
+```bash
+# Build images
+docker build -f docker/Dockerfile -t next-map .          # Production image
+docker build -f docker/Dockerfile.dev -t next-map:dev . # Development image
+
+# Run containers manually
+docker run -p 3000:3000 --env-file .env.docker next-map
+
+# Using Docker Compose directly
+docker compose -f docker/docker-compose.yml up -d        # Production
+docker compose -f docker/docker-compose.dev.yml up -d   # Development
+
+# Check service status
+docker compose -f docker/docker-compose.yml ps
+```
+
+### Docker Architecture & Services
+
+The Docker setup provides a complete containerized environment with the following components:
+
+#### **Application Container**
+
+**Production Build (multi-stage):**
+
+- **Stage 1 - Dependencies**: Installs pnpm and Node.js dependencies
+- **Stage 2 - Builder**: Compiles TypeScript and builds optimized Next.js application
+- **Stage 3 - Runner**: Minimal Alpine Linux runtime with only production files
+
+**Development Build:**
+
+- Node.js runtime with development dependencies
+- Source code mounted as volumes for hot reloading
+- File watching enabled for automatic rebuilds
+
+#### **Database Container**
+
+**PostgreSQL Database:**
+
+- PostgreSQL 15 Alpine image for optimal performance
+- Persistent data storage with named Docker volumes
+- Health checks and automatic restart policies
+- Database initialization scripts for schema setup
+- Configurable through environment variables
+
+#### **Networking & Communication**
+
+**Docker Network:**
+
+- Isolated internal network for service communication
+- Service discovery (app can reach database via `postgres` hostname)
+- External port mapping for browser access
+- Secure inter-container communication
+
+#### **Volume Management**
+
+**Persistent Volumes:**
+
+- `postgres_data`: Database files persist across container restarts
+- `node_modules`: Cached dependencies for faster builds (development)
+
+**Bind Mounts (Development only):**
+
+- Source code directory mounted for live code changes
+- Excludes `node_modules` and `.next` to prevent conflicts
+
+### Docker File Organization
+
+All Docker-related files are organized in the `/docker` directory for better project structure:
+
+```
+next-map/
+├── .dockerignore              # Files excluded from Docker build context
+├── .env.docker.example        # Environment variables template
+├── scripts/                   # Convenience scripts
+│   ├── docker-dev.sh         # Start development environment
+│   └── docker-prod.sh        # Start production environment
+└── docker/                   # Docker configuration directory
+    ├── Dockerfile            # Multi-stage production build
+    ├── Dockerfile.dev        # Development environment with hot reload
+    ├── docker-compose.yml    # Production services configuration
+    ├── docker-compose.dev.yml # Development services configuration
+    ├── docker-compose.override.yml # Local development overrides
+    └── postgres/             # Database configuration
+        └── init/
+            └── 01-init.sh    # Database initialization script
+```
+
+**Key Configuration Details:**
+
+- **Build Context**: All Dockerfiles use `..` as context to access the entire project
+- **Volume Mounts**: Development containers mount `..:/app` for live code changes
+- **Service Discovery**: Containers communicate using service names (e.g., `postgres`)
+- **Port Configuration**: Customizable through environment variables
+
+### Troubleshooting Docker Issues
+
+#### Common Problems and Solutions
+
+**Container fails to start:**
+
+```bash
+# Check container status and logs
+docker ps -a
+docker compose -f docker/docker-compose.yml logs
+
+# Restart all services
+docker compose -f docker/docker-compose.yml down
+docker compose -f docker/docker-compose.yml up -d
+```
+
+**Database connection issues:**
+
+```bash
+# Verify database container health
+docker compose -f docker/docker-compose.yml ps
+
+# Check database logs for errors
+docker compose -f docker/docker-compose.yml logs postgres
+
+# Test database connectivity
+docker compose -f docker/docker-compose.yml exec postgres pg_isready -U nextmap
+
+# Reset database (WARNING: removes all data)
+docker compose -f docker/docker-compose.yml down -v
+docker compose -f docker/docker-compose.yml up -d
+```
+
+**Port conflicts:**
+
+```bash
+# Check which processes are using ports
+netstat -an | findstr :3000    # Windows
+lsof -i :3000                  # macOS/Linux
+
+# Modify ports in .env.docker
+APP_PORT=3001
+POSTGRES_PORT=5433
+
+# Or stop conflicting services
+sudo service postgresql stop   # Linux
+brew services stop postgresql  # macOS
+```
+
+**Build issues:**
+
+```bash
+# Clear Docker build cache
+docker builder prune
+
+# Rebuild without cache
+docker compose -f docker/docker-compose.yml build --no-cache
+
+# Check Dockerfile syntax
+docker build -f docker/Dockerfile --dry-run .
+```
+
+**Permission issues (Linux/WSL):**
+
+```bash
+# Fix ownership issues
+sudo chown -R $USER:$USER .
+
+# Add user to docker group
+sudo usermod -aG docker $USER
+# Restart terminal after running this command
+```
+
+#### Performance Optimization
+
+**For better Docker performance:**
+
+- **Increase Docker memory allocation** to 8GB+ in Docker Desktop settings
+- **Enable BuildKit** for faster builds: `export DOCKER_BUILDKIT=1`
+- **Use multi-stage builds** (already implemented in production Dockerfile)
+- **Optimize .dockerignore** to exclude unnecessary files (already configured)
+- **Use Docker volume** for node_modules in development (already implemented)
+
+**Development-specific optimizations:**
+
+- Use `WATCHPACK_POLLING=true` for file watching in WSL2 environments
+- Mount source code as bind volumes for instant file changes
+- Exclude `node_modules` and `.next` from bind mounts to prevent conflicts
+
+### Cross-Platform Compatibility
+
+This Docker setup provides consistent development and deployment across different operating systems:
+
+**Supported Platforms:**
+
+- **Windows** (Docker Desktop with WSL2 backend recommended)
+- **macOS** (Docker Desktop for Mac)
+- **Linux** (Docker Engine or Docker Desktop)
+
+**Platform-specific considerations:**
+
+**Windows (WSL2):**
+
+- Enable WSL2 integration in Docker Desktop
+- Clone repository inside WSL2 filesystem for better performance
+- Use `WATCHPACK_POLLING=true` in development for file watching
+
+**macOS:**
+
+- Enable "Use gRPC FUSE for file sharing" in Docker Desktop for better volume performance
+- Allocate sufficient resources in Docker Desktop preferences
+
+**Linux:**
+
+- Install Docker Engine directly or use Docker Desktop
+- Add user to docker group to avoid using sudo
+- Ensure proper file permissions for mounted volumes
+
+**Getting started on any platform:**
+
+```bash
+git clone https://github.com/eric-orozco/next-map.git
+cd next-map
+cp .env.docker.example .env.docker
+# Edit .env.docker with your configuration
+docker compose -f docker/docker-compose.yml up -d
+```
+
+Access your application at **http://localhost:3000** on any platform!
 
 ## CI/CD & Deployment
 
@@ -552,12 +926,6 @@ pnpm build          # Production build
 - TypeScript strict mode compliance
 - ESLint + Prettier formatting
 - Conventional commit messages
-
----
-
-## License
-
-MIT License - see [LICENSE](LICENSE) for details.
 
 ---
 

@@ -1,0 +1,89 @@
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: next-map-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-nextmap}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-nextmap_password}
+      POSTGRES_DB: ${POSTGRES_DB:-nextmap}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./postgres/init:/docker-entrypoint-initdb.d
+    ports:
+      - '${POSTGRES_PORT:-5432}:5432'
+    networks:
+      - next-map-network
+    healthcheck:
+      test:
+        [
+          'CMD-SHELL',
+          'pg_isready -U ${POSTGRES_USER:-nextmap} -d ${POSTGRES_DB:-nextmap}',
+        ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # Next.js Application
+  app:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+      target: runner
+    container_name: next-map-app
+    restart: unless-stopped
+    environment:
+      NODE_ENV: ${NODE_ENV:-production}
+      DATABASE_URL: postgresql://${POSTGRES_USER:-nextmap}:${POSTGRES_PASSWORD:-nextmap_password}@postgres:5432/${POSTGRES_DB:-nextmap}
+      NEXTAUTH_URL: ${NEXTAUTH_URL:-http://localhost:3000}
+      NEXTAUTH_SECRET: ${NEXTAUTH_SECRET}
+      NEXT_PUBLIC_MAP_API_KEY: ${NEXT_PUBLIC_MAP_API_KEY}
+      NEXT_TELEMETRY_DISABLED: 1
+    ports:
+      - '${APP_PORT:-3000}:3000'
+    networks:
+      - next-map-network
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ['CMD-SHELL', 'curl -f http://localhost:3000/api/health || exit 1']
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+
+  # Development services (commented out by default)
+  # Uncomment these for development with hot reloading
+
+  # app-dev:
+  #   build:
+  #     context: ..
+  #     dockerfile: docker/Dockerfile.dev
+  #   container_name: next-map-app-dev
+  #   environment:
+  #     NODE_ENV: development
+  #     DATABASE_URL: postgresql://${POSTGRES_USER:-nextmap}:${POSTGRES_PASSWORD:-nextmap_password}@postgres:5432/${POSTGRES_DB:-nextmap}
+  #     NEXTAUTH_URL: ${NEXTAUTH_URL:-http://localhost:3000}
+  #     NEXTAUTH_SECRET: ${NEXTAUTH_SECRET}
+  #     NEXT_PUBLIC_MAP_API_KEY: ${NEXT_PUBLIC_MAP_API_KEY}
+  #   ports:
+  #     - "${APP_DEV_PORT:-3001}:3000"
+  #   volumes:
+  #     - ..:/app
+  #     - /app/node_modules
+  #     - /app/.next
+  #   networks:
+  #     - next-map-network
+  #   depends_on:
+  #     postgres:
+  #       condition: service_healthy
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  next-map-network:
+    driver: bridge

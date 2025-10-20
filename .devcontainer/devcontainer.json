@@ -1,0 +1,29 @@
+{
+  "name": "Next Map Development",
+  "dockerComposeFile": "../docker-compose.dev.yml",
+  "service": "app-dev",
+  "workspaceFolder": "/app",
+  "shutdownAction": "stopCompose",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.vscode-typescript-next",
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+        "Prisma.prisma",
+        "bradlc.vscode-tailwindcss",
+        "ms-vscode.vscode-docker",
+        "GitHub.copilot",
+        "GitHub.copilot-chat"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "typescript.preferences.includePackageJsonAutoImports": "on",
+        "terminal.integrated.defaultProfile.linux": "bash"
+      }
+    }
+  },
+  "forwardPorts": [3000, 5432],
+  "postCreateCommand": "pnpm install && pnpm db:generate",
+  "remoteUser": "node"
+}
