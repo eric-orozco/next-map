@@ -37,7 +37,7 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
       </head>
-      <body 
+      <body
         className={`${inter.variable} ${orbitron.variable}`}
         suppressHydrationWarning
       >

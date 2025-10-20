@@ -14,7 +14,7 @@ export default function HTMLAttributesSetter() {
     // Set lang attribute
     if (typeof document !== 'undefined') {
       document.documentElement.lang = locale;
-      
+
       // Set dir attribute for RTL languages
       const isRTL = locale === 'ar-SA';
       document.documentElement.dir = isRTL ? 'rtl' : 'ltr';

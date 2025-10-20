@@ -1,9 +1,10 @@
 {
   "name": "Next Map Development",
-  "dockerComposeFile": "../docker-compose.dev.yml",
-  "service": "app-dev",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
   "workspaceFolder": "/app",
-  "shutdownAction": "stopCompose",
   "customizations": {
     "vscode": {
       "extensions": [
@@ -23,7 +24,10 @@
       }
     }
   },
-  "forwardPorts": [3000, 5432],
+  "forwardPorts": [3000],
   "postCreateCommand": "pnpm install && pnpm db:generate",
-  "remoteUser": "node"
+  "remoteUser": "node",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
+  }
 }
