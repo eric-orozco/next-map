@@ -1,0 +1,17 @@
+{
+  "name": "Next.js Simple Dev Container",
+  "image": "node:22-bookworm",
+  
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.vscode-typescript-next",
+        "esbenp.prettier-vscode"
+      ]
+    }
+  },
+
+  "forwardPorts": [3000],
+  
+  "postCreateCommand": "npm install -g pnpm@9.12.3"
+}

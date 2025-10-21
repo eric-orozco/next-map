@@ -1,39 +1,26 @@
-# Standalone development container
-FROM node:20-alpine
+# Use the official Node.js runtime as the base image
+FROM mcr.microsoft.com/devcontainers/typescript-node:1-22-bookworm
 
-# Install system dependencies
-RUN apk add --no-cache \
-    libc6-compat \
-    curl \
-    git \
-    bash \
+# Install additional system dependencies
+RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
+    && apt-get -y install --no-install-recommends \
     postgresql-client \
-    ca-certificates
+    && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/*
 
-# Enable corepack for pnpm
-RUN corepack enable
+# Install pnpm globally
+RUN npm install -g pnpm@9.12.3
 
-# Create app directory and set ownership
-WORKDIR /app
-RUN chown node:node /app
+# Set the working directory
+WORKDIR /workspaces
 
-# Switch to node user for installations
-USER node
+# Copy package files first for better Docker layer caching
+COPY package*.json pnpm-lock.yaml* ./
 
-# Copy package files with correct ownership
-COPY --chown=node:node package.json pnpm-lock.yaml ./
+# Install dependencies (this will be cached if package files don't change)
+RUN pnpm install --frozen-lockfile || pnpm install
 
-# Install dependencies
-RUN pnpm install
+# Expose the ports the app runs on
+EXPOSE 3000 5555
 
-# Copy prisma schema
-COPY --chown=node:node prisma ./prisma/
-
-# Generate Prisma client
-RUN pnpm db:generate
-
-# Expose port
-EXPOSE 3000
-
-# Default command - start development server
-CMD ["tail", "-f", "/dev/null"]
+# Default command - keep container running
+CMD ["sleep", "infinity"]
