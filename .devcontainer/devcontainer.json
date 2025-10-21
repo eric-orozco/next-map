@@ -1,7 +1,7 @@
 {
   "name": "Next.js Map Application",
   "image": "mcr.microsoft.com/devcontainers/typescript-node:1-22-bookworm",
-  
+
   "customizations": {
     "vscode": {
       "extensions": [
@@ -21,9 +21,9 @@
   },
 
   "forwardPorts": [3000, 5555],
-  
+
   "postCreateCommand": "npm install -g pnpm@9.12.3 && pnpm install && pnpm run db:generate",
-  
+
   "containerEnv": {
     "NODE_ENV": "development",
     "NEXT_TELEMETRY_DISABLED": "1"
